@@ -1,32 +1,32 @@
 .Page1{
-    height: 10vh;
-    width: 100%;
-    background: blue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
-    font-weight: bold;
+  height: 10vh;
+  width: 100%;
+  background: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 .Page2{
-    height: 10vh;
-    width: 100%;
-    background: red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
-    font-weight: bold;
+  height: 10vh;
+  width: 100%;
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 .Page3{
-    height: 10vh;
-    width: 100%;
-    background: yellow;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
-    font-weight: bold;
+  height: 10vh;
+  width: 100%;
+  background: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
 }
