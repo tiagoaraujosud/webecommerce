@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useState} from 'react';
+import api from '../services/api';
 import './Page.css';
 
 import {Formik, Form, Field, ErrorMessage} from 'formik';
@@ -6,7 +7,15 @@ import * as yup from 'yup';
 
 function Page2 () {
     
-    const handleClickRegister = (values) => console.log.values;
+    async function handleClickRegister(){
+        const data={
+            email: login, 
+            senha: password}
+
+        const response = await api.post('/api/users', data)
+
+        console.log(response)
+    }
 
     const validationRegister = yup.object().shape({
         email: yup.string().email("Não é um email válido").required("Este campo é obrigatório!"),
@@ -14,53 +23,54 @@ function Page2 () {
         confirmPassword: yup.string().oneOf([yup.ref("password"), null], "As senhas não são iguais!")
     })
 
+    const [login, setLogin] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
         
         <div>
         
-        <div className="container">
-            <h1>Registro</h1>
-            <Formik initialValues={{}} onSubmit={handleClickRegister} validationSchema={validationRegister}>
+            <div className="container">
+                <h1>Registro</h1>
+                <Formik initialValues={{}}  validationSchema={validationRegister}>
 
-            <Form className='login-form'>
+                <Form className='login-form'>
 
-                <div className='login-form-group'>
-                
-                <Field name='email' className='form-field' placeHolder='email'></Field>
+                    <div className='login-form-group'>
+                    
+                        <Field name='email' className='form-field' placeHolder='email' value={login} onChange={e => setLogin(e.target.value)}></Field>
 
-                <ErrorMessage component='spam' name='email' className='form-error'></ErrorMessage>
+                        <ErrorMessage component='spam' name='email' className='form-error'></ErrorMessage>
 
-                </div>
+                    </div>
 
 
-                <div className='login-form-group'>
-                
-                <Field name='password' className='form-field' placeHolder='senha'></Field>
+                    <div className='login-form-group'>
+                    
+                        <Field name='password' type='password' className='form-field' placeHolder='password' value={password} onChange={e => setPassword(e.target.value)}></Field>
 
-                <ErrorMessage component='spam' name='password' className='form-error'></ErrorMessage>
+                        <ErrorMessage component='spam' name='password' className='form-error'></ErrorMessage>
 
-                </div>
+                    </div>
 
-                <div className='login-form-group'>
-                
-                <Field name='confirmPassword' className='form-field' placeHolder='Confirme sua senha'></Field>
+                    <div className='login-form-group'>
+                    
+                        <Field name='confirmPassword' type='password' className='form-field' placeHolder='Confirm Password'></Field>
 
-                <ErrorMessage component='spam' name='confirmPassword' className='form-error'></ErrorMessage>
+                        <ErrorMessage component='spam' name='confirmPassword' className='form-error'></ErrorMessage>
 
-                </div>
+                    </div>
 
-                <button className='button' type='submit'>Registrar</button>
+                    <button className='button' onClick={handleClickRegister} type='submit'>Save</button>
 
-            </Form>
+                </Form>
 
-            </Formik>
+                </Formik>
 
-        
-        </div>
+            </div>
 
         </div>
     );
-
 
 }
 
