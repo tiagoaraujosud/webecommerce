@@ -12,8 +12,9 @@ function Page2 () {
       email: login, 
       senha: password}
 
-    await api.post('/api/users', data)
+    const response = await api.post('/api/users', data)
 
+    console.log(response)
   }
 
   const validationRegister = yup.object().shape({
