@@ -1,47 +1,47 @@
 .container{
-    max-width: 200px;
-    height: max-content;
-    margin: 30px auto;
-    background-color: chartreuse;
-    overflow: auto;
-    margin-top: 50px;
-    border: 2px solid #222;
-    padding: 20px 15px;
-    border-radius: 10px;
-    font-family: sans-serif;
-    box-shadow: 10px 11px rgba(0, 0, 0, 0.7);
+  max-width: 200px;
+  height: max-content;
+  margin: 30px auto;
+  background-color: chartreuse;
+  overflow: auto;
+  margin-top: 50px;
+  border: 2px solid #222;
+  padding: 20px 15px;
+  border-radius: 10px;
+  font-family: sans-serif;
+  box-shadow: 10px 11px rgba(0, 0, 0, 0.7);
 }
 
 h1{
-    margin: 0;
-    text-align: center;
-    margin-bottom: 10px;
+  margin: 0;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .login-form{
-    padding: 5px;
+  padding: 5px;
 }
 
 .form-field{
-    display: inline-block;
-    padding: 5px;
-    margin-top: 20px;
+  display: inline-block;
+  padding: 5px;
+  margin-top: 20px;
 }
 
 .form-error{
-    display: block;
-    color: rgb(237, 67, 55);
-    font-size: 0.9em;
-    font-weight: 600;
+  display: block;
+  color: rgb(237, 67, 55);
+  font-size: 0.9em;
+  font-weight: 600;
 }
 
 .button{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 5px 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 5px 10px;
 }
 
 div{
-    text-align: center;   
-    margin-bottom: 20px;
+  text-align: center;   
+  margin-bottom: 20px;
 }
