@@ -12,9 +12,16 @@ function Page2 () {
             email: login, 
             senha: password}
 
+            console.log(data)
         const response = await api.post('/api/users', data)
 
-        console.log(response)
+        if(response.status === true){
+            console.log('Cadastro efetuado com sucesso!!!')
+        }else{
+            console.log('Cadastro não foi criado!!!')
+        }
+
+        
     }
 
     const validationRegister = yup.object().shape({
@@ -38,7 +45,7 @@ function Page2 () {
 
                     <div className='login-form-group'>
                     
-                        <Field name='email' className='form-field' placeHolder='email' value={login} onChange={e => setLogin(e.target.value)}></Field>
+                        <Field name='email' className='form-field' placeholder='email' value={login} onChange={e => setLogin(e.target.value)}></Field>
 
                         <ErrorMessage component='spam' name='email' className='form-error'></ErrorMessage>
 
@@ -47,7 +54,7 @@ function Page2 () {
 
                     <div className='login-form-group'>
                     
-                        <Field name='password' type='password' className='form-field' placeHolder='password' value={password} onChange={e => setPassword(e.target.value)}></Field>
+                        <Field name='password' type='password' className='form-field' placeholder='password' value={password} onChange={e => setPassword(e.target.value)}></Field>
 
                         <ErrorMessage component='spam' name='password' className='form-error'></ErrorMessage>
 
@@ -55,13 +62,13 @@ function Page2 () {
 
                     <div className='login-form-group'>
                     
-                        <Field name='confirmPassword' type='password' className='form-field' placeHolder='Confirm Password'></Field>
+                        <Field name='confirmPassword' type='password' className='form-field' placeholder='Confirm Password'></Field>
 
                         <ErrorMessage component='spam' name='confirmPassword' className='form-error'></ErrorMessage>
 
                     </div>
 
-                    <button className='button' onClick={handleClickRegister} type='submit'>Save</button>
+                    <button className='button' onSubmit={handleClickRegister}>Save</button>
 
                 </Form>
 
