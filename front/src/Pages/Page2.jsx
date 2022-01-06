@@ -8,13 +8,14 @@ import * as yup from 'yup';
 function Page2 () {
   
   async function handleClickRegister(){
+    
     const data={
-      email: login, 
+      email: login,
       senha: password}
 
     const response = await api.post('/api/users', data)
 
-    console.log(response)
+    console.log(response.data.email)
   }
 
   const validationRegister = yup.object().shape({
@@ -38,26 +39,18 @@ function Page2 () {
 
           <div className='login-form-group'>
           
-            <Field name='email' className='form-field' placeHolder='email' value={login} onChange={e => setLogin(e.target.value)}></Field>
+            <Field name='email' className='form-field' placeholder='email' value={login} onChange={e => setLogin(e.target.value)}></Field>
 
-            <ErrorMessage component='spam' name='email' className='form-error'></ErrorMessage>
+            <ErrorMessage name='email' className='form-error'></ErrorMessage>
 
           </div>
 
 
           <div className='login-form-group'>
           
-            <Field name='password' type='password' className='form-field' placeHolder='password' value={password} onChange={e => setPassword(e.target.value)}></Field>
+            <Field name='password' type='password' className='form-field' placeholder='password' value={password} onChange={e => setPassword(e.target.value)}></Field>
 
-            <ErrorMessage component='spam' name='password' className='form-error'></ErrorMessage>
-
-          </div>
-
-          <div className='login-form-group'>
-          
-            <Field name='confirmPassword' type='password' className='form-field' placeHolder='Confirm Password'></Field>
-
-            <ErrorMessage component='spam' name='confirmPassword' className='form-error'></ErrorMessage>
+            <ErrorMessage name='password' className='form-error'></ErrorMessage>
 
           </div>
 
