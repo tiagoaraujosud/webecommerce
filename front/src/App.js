@@ -1,17 +1,15 @@
 import './App.css';
 import React from 'react';
 
-import Menu from './Components/Menu';
+import RoutesComponent from './routes';
 
 const App = () => {
-
   return (
-      <div>
-        <h1>Web-ecommerce</h1>
+    <div>
+      <h1>Web-ecommerce</h1>
 
-        <Menu />
-
-      </div>
+      <RoutesComponent />
+    </div>
   );
 }
 
