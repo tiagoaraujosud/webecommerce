@@ -1,8 +1,10 @@
 import {Request, Response} from 'express';
 import {QueryResult} from 'pg';
-import {pool} from '../database'
+import {pool} from '../database';
 
 /**GET ALL USERS */
+
+
 export const getUsers = async (req: Request, res: Response): Promise<Response> => {
     try{
         const response: QueryResult = await pool.query('SELECT * FROM users');
@@ -32,6 +34,7 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
     const resopnse: QueryResult = await pool.query('INSERT INTO users (email, senha) VALUES ($1, $2)', [email, senha]);
 
     return res.json({
+
         message: 'User created successfully',
         body: {
             email,

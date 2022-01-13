@@ -4,7 +4,7 @@ import './Page.css';
 
 const Page1 = () => {
   return (
-    <div class = 'Page1'>
+    <div className = 'Page1'>
       Home
     </div>
   )
