@@ -1,21 +1,18 @@
 import React,{useState} from 'react';
-import api from '../services/api';
 import './Page.css';
+import api from '../services/api';
 
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as yup from 'yup';
 
 function Page2 () {
-  
   async function handleClickRegister(){
-    
-    const data={
+    const data = {
       email: login,
-      senha: password}
+      senha: password
+    }
 
-    const response = await api.post('/api/users', data)
-
-    console.log(response.data)
+    await api.post('/users', data)
   }
 
   const validationRegister = yup.object().shape({
@@ -28,43 +25,27 @@ function Page2 () {
   const [password, setPassword] = useState('');
 
   return (
-    
     <div>
-    
       <div className="container">
         <h1>Registro</h1>
         <Formik initialValues={{}}  validationSchema={validationRegister}>
+          <Form className='login-form'>
+            <div className='login-form-group'>
+              <Field name='email' className='form-field' placeholder='email' value={login} onChange={e => setLogin(e.target.value)}></Field>
+              <ErrorMessage name='email' className='form-error'></ErrorMessage>
+            </div>
 
-        <Form className='login-form'>
+            <div className='login-form-group'>
+              <Field name='password' type='password' className='form-field' placeholder='password' value={password} onChange={e => setPassword(e.target.value)}></Field>
+              <ErrorMessage name='password' className='form-error'></ErrorMessage>
+            </div>
 
-          <div className='login-form-group'>
-          
-            <Field name='email' className='form-field' placeholder='email' value={login} onChange={e => setLogin(e.target.value)}></Field>
-
-            <ErrorMessage name='email' className='form-error'></ErrorMessage>
-
-          </div>
-
-
-          <div className='login-form-group'>
-          
-            <Field name='password' type='password' className='form-field' placeholder='password' value={password} onChange={e => setPassword(e.target.value)}></Field>
-
-            <ErrorMessage name='password' className='form-error'></ErrorMessage>
-
-          </div>
-
-          <button className='button' onClick={handleClickRegister} type='submit'>Save</button>
-
-        </Form>
-
+            <button className='button' onClick={handleClickRegister} type='submit'>Save</button>
+          </Form>
         </Formik>
-
       </div>
-
     </div>
   );
-
 }
 
 export default Page2;

@@ -7,7 +7,6 @@ const App = () => {
   return (
     <div>
       <h1>Web-ecommerce</h1>
-
       <RoutesComponent />
     </div>
   );

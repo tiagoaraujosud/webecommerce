@@ -2,7 +2,7 @@ import React from 'react';
 import './Page.css';
 
 
-const Page1 = () => {
+const Home = () => {
   return (
     <div className = 'Page1'>
       Home
@@ -10,4 +10,4 @@ const Page1 = () => {
   )
 }
 
-export default Page1;
+export default Home;
