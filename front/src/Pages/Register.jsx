@@ -5,7 +5,7 @@ import api from '../services/api';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as yup from 'yup';
 
-function Page2 () {
+function Register () {
   async function handleClickRegister(){
     const data = {
       email: login,
@@ -48,4 +48,4 @@ function Page2 () {
   );
 }
 
-export default Page2;
+export default Register;
