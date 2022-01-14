@@ -2,20 +2,18 @@ import express from 'express';
 const app = express();
 const cors = require('cors');
 
+import indexRoutes from './routes/index'
 
 
 //middlewares
 
-
 app.use(express.json());
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Origin", "*");
-    app.use(cors());
-    next();
-})
+app.use(cors());
 
 app.use(express.urlencoded({extended: false}));
+
+app.use(indexRoutes);
 
 app.listen(4000);
 

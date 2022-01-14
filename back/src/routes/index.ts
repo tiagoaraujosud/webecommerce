@@ -1,7 +1,7 @@
 import {application, Router} from 'express';
 const router = Router();
 
-import {getUsers, getUserbyId, createUser, deleteUser, updateUser} from '../controllers/index.controller';
+import {getUsers, getUserbyId, createUser, deleteUser, updateUser} from '../controllers/users.controller';
 
 router.get('/users', getUsers);
 router.get('/users/:id', getUserbyId);

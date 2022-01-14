@@ -6,13 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const cors = require('cors');
+const index_1 = __importDefault(require("./routes/index"));
 //middlewares
 app.use(express_1.default.json());
-app.use((req, res, next) => {
-    res.header("Access-Control-Origin", "*");
-    app.use(cors());
-    next();
-});
+app.use(cors());
 app.use(express_1.default.urlencoded({ extended: false }));
+app.use(index_1.default);
 app.listen(4000);
 console.log('Sever on port', 4000);
