@@ -3,7 +3,7 @@ import React from 'react';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as yup from 'yup';
 
-function Page3() {
+function Login() {
 
   const handleClickLogin = (values) => console.log.values;
 
@@ -50,4 +50,4 @@ function Page3() {
   );
 }
 
-export default Page3;
+export default Login;
