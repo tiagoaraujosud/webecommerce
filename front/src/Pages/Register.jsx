@@ -3,23 +3,30 @@ import './Page.css';
 import api from '../services/api';
 
 import {Formik, Form, Field, ErrorMessage} from 'formik';
-import * as yup from 'yup';
+import * as Yup from 'yup';
 
 function Register () {
-  async function handleClickRegister(){
+  const handleClickRegister = (event) => {
     const data = {
       email: login,
       senha: password
-    }
+    };
+    api.post('/users', data);
+  };
 
-    await api.post('/users', data)
+  const createUser = (event) => {
+    event.preventDefault();
+    let data = {
+      email: event.target[0].value,
+      senha: event.target[1].value
+    };
+    console.log(data)
   }
 
-  const validationRegister = yup.object().shape({
-    email: yup.string().email("Não é um email válido").required("Este campo é obrigatório!"),
-    password: yup.string().min(8, "A senha deve ter pelo menos 8 caracteres.").required("Este campo é obrigatório!"),
-    confirmPassword: yup.string().oneOf([yup.ref("password"), null], "As senhas não são iguais!")
-  })
+  const signupSchema = Yup.object().shape({
+    email: Yup.string().email("It is not a email adress").required('Required'),
+    senha: Yup.string().min(8, "Must be 8 characters or more").required('Required')
+  });
 
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
@@ -28,10 +35,10 @@ function Register () {
     <div>
       <div className="container">
         <h1>Registro</h1>
-        <Formik initialValues={{}}  validationSchema={validationRegister}>
-          <Form className='login-form'>
+        <Formik initialValues={{email: '', password: ''}}  validationSchema={signupSchema}>
+          <Form className='login-form' onSubmit={handleClickRegister}>
             <div className='login-form-group'>
-              <Field name='email' className='form-field' placeholder='email' value={login} onChange={e => setLogin(e.target.value)}></Field>
+              <Field name='email' className='form-field' placeholder='email@email.com' value={login} onChange={e => setLogin(e.target.value)}></Field>
               <ErrorMessage name='email' className='form-error'></ErrorMessage>
             </div>
 
@@ -40,7 +47,7 @@ function Register () {
               <ErrorMessage name='password' className='form-error'></ErrorMessage>
             </div>
 
-            <button className='button' onClick={handleClickRegister} type='submit'>Save</button>
+            <button className='button' type='submit'>Save</button>
           </Form>
         </Formik>
       </div>
