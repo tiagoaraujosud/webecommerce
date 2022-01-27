@@ -1,8 +1,8 @@
-import * as yup from 'yup';
+import * as Yup from 'yup';
 
-const registerSchema = yup.object().shape({
-    email: yup.string().email().required(),
-    password: yup.string().min(4).max(10).required()
+const registerSchema = Yup.object().shape({
+    email: Yup.string().email().required('Required'),
+    password: Yup.string().min(4).max(5).required()
 });
 
 export default registerSchema;

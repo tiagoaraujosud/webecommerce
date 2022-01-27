@@ -4,31 +4,18 @@ import api from '../services/api';
 
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import registerSchema from '../Validation/registerValidation';
-import * as Yup from 'yup';
 
 function Register () {
-  const handleClickRegister = (event) => {
+  const handleClickRegister = async (event) => {
     event.preventDefault();
-    const data = {
+    let data = {
       email: login,
       senha: password
     };
+    const isValid = await registerSchema.isValid(data);
+    console.log(isValid);
     api.post('/users', data);
   };
-
-  const createUser = (event) => {
-    //event.preventDefault();
-    let data = {
-      email: event.target[0].value,
-      senha: event.target[1].value
-    };
-    console.log(data)
-  }
-
-  const signupSchema = Yup.object().shape({
-    email: Yup.string().email("It is not a email adress").required('Required'),
-    senha: Yup.string().min(8, "Must be 8 characters or more").required('Required')
-  });
 
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
@@ -37,7 +24,7 @@ function Register () {
     <div>
       <div className="container">
         <h1>Registro</h1>
-        <Formik initialValues={{email: '', password: ''}}  validationSchema={signupSchema}>
+        <Formik initialValues={{email: '', password: ''}} validationSchema={registerSchema}>
           <Form className='login-form' onSubmit={handleClickRegister}>
             <div className='login-form-group'>
               <Field name='email' className='form-field' placeholder='email@email.com' value={login} onChange={e => setLogin(e.target.value)}></Field>
