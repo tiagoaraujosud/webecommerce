@@ -3,10 +3,12 @@ import './Page.css';
 import api from '../services/api';
 
 import {Formik, Form, Field, ErrorMessage} from 'formik';
+import registerSchema from '../Validation/registerValidation';
 import * as Yup from 'yup';
 
 function Register () {
   const handleClickRegister = (event) => {
+    event.preventDefault();
     const data = {
       email: login,
       senha: password
@@ -15,7 +17,7 @@ function Register () {
   };
 
   const createUser = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     let data = {
       email: event.target[0].value,
       senha: event.target[1].value
