@@ -4,7 +4,6 @@ const cors = require('cors');
 
 import indexRoutes from './routes/index'
 
-
 //middlewares
 
 app.use(express.json());

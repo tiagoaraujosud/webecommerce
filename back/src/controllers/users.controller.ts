@@ -1,10 +1,9 @@
-import {Request, Response} from 'express';
+import {Request, response, Response} from 'express';
+import { validationResult } from 'express-validator';
 import {QueryResult} from 'pg';
 import {pool} from '../database';
 
 /**GET ALL USERS */
-
-
 export const getUsers = async (req: Request, res: Response): Promise<Response> => {
     try{
         const response: QueryResult = await pool.query('SELECT * FROM users');
@@ -30,11 +29,22 @@ export const getUserbyId = async (req: Request, res: Response): Promise<Response
 /**CREATE A NEW USER */
 export const createUser = async (req: Request, res: Response): Promise<Response> => {
     const {email, senha} = req.body;
+    
+    try {
+        const erros = validationResult(req);
+
+        if(!erros.isEmpty()){
+            return res.status(400).json({ erros: erros.array()})
+        }else{
+            console.log('Deu certo!')   
+        }
+    } catch (error) {
+        console.log(error)
+    }
 
     const resopnse: QueryResult = await pool.query('INSERT INTO users (email, senha) VALUES ($1, $2)', [email, senha]);
 
     return res.json({
-
         message: 'User created successfully',
         body: {
             email,
