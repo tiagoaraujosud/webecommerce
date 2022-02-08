@@ -12,6 +12,7 @@ function Register () {
       email: login,
       senha: password
     };
+  
     const isValid = await registerSchema.isValid(data);
     console.log(isValid);
     api.post('/users', data);
