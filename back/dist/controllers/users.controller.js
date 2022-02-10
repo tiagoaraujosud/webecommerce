@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteUser = exports.updateUser = exports.createUser = exports.getUserbyId = exports.getUsers = void 0;
-const express_validator_1 = require("express-validator");
 const database_1 = require("../database");
 /**GET ALL USERS */
 const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -34,19 +33,10 @@ exports.getUserbyId = getUserbyId;
 /**CREATE A NEW USER */
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, senha } = req.body;
-    try {
-        const erros = (0, express_validator_1.validationResult)(req);
-        if (!erros.isEmpty()) {
-            return res.status(400).json({ erros: erros.array() });
-        }
-        else {
-            console.log('Deu certo!');
-        }
+    if (email) {
+        console.log('Deu certo');
     }
-    catch (error) {
-        console.log(error);
-    }
-    const resopnse = yield database_1.pool.query('INSERT INTO users (email, senha) VALUES ($1, $2)', [email, senha]);
+    const response = yield database_1.pool.query('INSERT INTO users (email, senha) VALUES ($1, $2)', [email, senha]);
     return res.json({
         message: 'User created successfully',
         body: {

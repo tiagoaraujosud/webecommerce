@@ -1,6 +1,9 @@
 import {application, Router} from 'express';
 const router = Router();
 
+const validation = require('../middlewares/validationMiddleware');
+const userSchema  = require('../validations/UserValidation');
+
 import {getUsers, getUserbyId, createUser, deleteUser, updateUser} from '../controllers/users.controller';
 
 router.get('/users', getUsers);

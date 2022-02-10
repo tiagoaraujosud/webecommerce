@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const router = (0, express_1.Router)();
+const validation = require('../middlewares/validationMiddleware');
+const userSchema = require('../validations/UserValidation');
 const users_controller_1 = require("../controllers/users.controller");
 router.get('/users', users_controller_1.getUsers);
 router.get('/users/:id', users_controller_1.getUserbyId);
