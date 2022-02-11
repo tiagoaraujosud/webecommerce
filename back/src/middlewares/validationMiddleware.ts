@@ -7,7 +7,6 @@ const validation = (schema: any) => async (req: Request, res: Response, next: Ne
     try {
         await schema.validate(body);
         next();
-        console.log('deu certo');
         return console.log('deu certo');
     } catch (error) {
         return console.log('deu errado!!!')

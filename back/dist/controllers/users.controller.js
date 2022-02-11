@@ -33,9 +33,6 @@ exports.getUserbyId = getUserbyId;
 /**CREATE A NEW USER */
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, senha } = req.body;
-    if (email) {
-        console.log('Deu certo');
-    }
     const response = yield database_1.pool.query('INSERT INTO users (email, senha) VALUES ($1, $2)', [email, senha]);
     return res.json({
         message: 'User created successfully',

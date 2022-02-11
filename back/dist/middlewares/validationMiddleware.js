@@ -14,7 +14,6 @@ const validation = (schema) => (req, res, next) => __awaiter(void 0, void 0, voi
     try {
         yield schema.validate(body);
         next();
-        console.log('deu certo');
         return console.log('deu certo');
     }
     catch (error) {

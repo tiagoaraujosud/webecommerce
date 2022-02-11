@@ -1,5 +1,5 @@
 import {Request, response, Response} from 'express';
-import { validationResult } from 'express-validator';
+import { body, validationResult } from 'express-validator';
 import {QueryResult} from 'pg';
 import {pool} from '../database';
 import { ValidatorsImpl } from 'express-validator/src/chain';
@@ -30,10 +30,6 @@ export const getUserbyId = async (req: Request, res: Response): Promise<Response
 /**CREATE A NEW USER */
 export const createUser = async (req: Request, res: Response): Promise<Response> => {
     const {email, senha} = req.body;
-
-    if(email){
-        console.log('Deu certo')
-    }
 
     const response: QueryResult = await pool.query('INSERT INTO users (email, senha) VALUES ($1, $2)', [email, senha]);
 

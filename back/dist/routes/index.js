@@ -7,7 +7,7 @@ const userSchema = require('../validations/UserValidation');
 const users_controller_1 = require("../controllers/users.controller");
 router.get('/users', users_controller_1.getUsers);
 router.get('/users/:id', users_controller_1.getUserbyId);
-router.post('/users', users_controller_1.createUser);
+router.post('/users', validation(userSchema), users_controller_1.createUser);
 router.put('/users/:id', users_controller_1.updateUser);
 router.delete('/users/:id', users_controller_1.deleteUser);
 exports.default = router;
