@@ -1,8 +1,6 @@
 import {Request, response, Response} from 'express';
-import { body, validationResult } from 'express-validator';
 import {QueryResult} from 'pg';
 import {pool} from '../database';
-import { ValidatorsImpl } from 'express-validator/src/chain';
 
 /**GET ALL USERS */
 export const getUsers = async (req: Request, res: Response): Promise<Response> => {
@@ -29,10 +27,10 @@ export const getUserbyId = async (req: Request, res: Response): Promise<Response
 
 /**CREATE A NEW USER */
 export const createUser = async (req: Request, res: Response): Promise<Response> => {
+    
     const {email, senha} = req.body;
 
     const response: QueryResult = await pool.query('INSERT INTO users (email, senha) VALUES ($1, $2)', [email, senha]);
-
 
     return res.json({
         message: 'User created successfully',

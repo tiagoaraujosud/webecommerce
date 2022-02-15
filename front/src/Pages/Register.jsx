@@ -50,7 +50,7 @@ function Register () {
                       }
                     />
 
-                    <ErrorMessage name='email' className='form-error'></ErrorMessage>
+                    <ErrorMessage name='email' className='form- error'></ErrorMessage>
                   </div>
 
                   <div className='login-form-group'>
