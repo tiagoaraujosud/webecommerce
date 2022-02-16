@@ -18,7 +18,6 @@ const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         return res.status(200).json(response.rows);
     }
     catch (e) {
-        console.log(e);
         return res.status(500).json('Internal Server error');
     }
 });
@@ -32,13 +31,13 @@ const getUserbyId = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.getUserbyId = getUserbyId;
 /**CREATE A NEW USER */
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { email, senha } = req.body;
-    const response = yield database_1.pool.query('INSERT INTO users (email, senha) VALUES ($1, $2)', [email, senha]);
+    const { email, password } = req.body;
+    const response = yield database_1.pool.query('INSERT INTO users (email, password) VALUES ($1, $2)', [email, password]);
     return res.json({
         message: 'User created successfully',
         body: {
             email,
-            senha
+            password
         }
     });
 });
@@ -46,8 +45,8 @@ exports.createUser = createUser;
 /**UPDATE A USER BY ID */
 const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id = parseInt(req.params.id);
-    const { email, senha } = req.body;
-    yield database_1.pool.query('UPDATE users SET email = $1, senha = $2 WHERE id = $3', [email, senha, id]);
+    const { email, password } = req.body;
+    yield database_1.pool.query('UPDATE users SET email = $1, password = $2 WHERE id = $3', [email, password, id]);
     return res.json('User ' + [id] + ' Updated successfully');
 });
 exports.updateUser = updateUser;

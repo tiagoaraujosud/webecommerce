@@ -10,7 +10,6 @@ export const getUsers = async (req: Request, res: Response): Promise<Response> =
         return res.status(200).json(response.rows);
 
     }catch(e){
-        console.log(e)
 
         return res.status(500).json('Internal Server error');
     }
@@ -28,15 +27,15 @@ export const getUserbyId = async (req: Request, res: Response): Promise<Response
 /**CREATE A NEW USER */
 export const createUser = async (req: Request, res: Response): Promise<Response> => {
     
-    const {email, senha} = req.body;
+    const {email, password} = req.body;
 
-    const response: QueryResult = await pool.query('INSERT INTO users (email, senha) VALUES ($1, $2)', [email, senha]);
+    const response: QueryResult = await pool.query('INSERT INTO users (email, password) VALUES ($1, $2)', [email, password]);
 
     return res.json({
         message: 'User created successfully',
         body: {
             email,
-            senha
+            password
         }
     })
 }
@@ -45,9 +44,9 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
 export const updateUser = async (req: Request, res: Response): Promise<Response> => {
     const id = parseInt(req.params.id);
 
-    const {email, senha} = req.body;
+    const {email, password} = req.body;
 
-    await pool.query('UPDATE users SET email = $1, senha = $2 WHERE id = $3', [email, senha, id]);
+    await pool.query('UPDATE users SET email = $1, password = $2 WHERE id = $3', [email, password, id]);
 
     return res.json('User ' + [id] + ' Updated successfully')
 }

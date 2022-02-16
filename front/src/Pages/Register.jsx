@@ -13,7 +13,6 @@ function Register () {
       email: values.email,
       password: values.password
     };
-
     api.post('/users', data);
   };
 
