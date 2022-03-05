@@ -9,18 +9,35 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.logout = exports.login = exports.getLogin = void 0;
+exports.logout = exports.login = exports.getLogin = exports.verifyJWT = void 0;
+//import {QueryResult} from 'pg';
+//import {pool} from '../database';
+const jwt = require('jsonwebtoken');
+const SECRET = 'adminadmin';
+function verifyJWT(req, res, next) {
+    const token = req.headers['x-access-token'];
+    jwt.verify(token, SECRET, (err, decoded) => {
+        if (err)
+            return res.status(401).end();
+        req.body.email = decoded.email;
+        next();
+    });
+}
+exports.verifyJWT = verifyJWT;
 /**GET LOGIN */
 const getLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    verifyJWT;
     return res.json([{ email: 'admin', password: 'admin' }]);
 });
 exports.getLogin = getLogin;
 /**LOGIN */
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    if (req.body.user === 'admin' && req.body.password === 'admin') {
-        res.end();
+    if (req.body.email === 'admin' && req.body.password === 'admin') {
+        const token = jwt.sign({ email: 'admin' }, SECRET, { expiresIn: 300 });
+        return res.json({ auth: true, token });
     }
-    res.status(401).end();
+    else
+        return res.status(401);
 });
 exports.login = login;
 /**LOGOUT */

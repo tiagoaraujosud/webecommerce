@@ -6,6 +6,7 @@ import {getProducts, getProductbyId, createProduct, deleteProduct, updateProduct
 import {createPedido} from '../controllers/pedidos.controller';
 import { getLogin, login } from '../controllers/login.controller';
 
+
 //Users routes
 router.get('/users', getUsers);
 router.get('/users/:id', getUserbyId);
@@ -28,3 +29,5 @@ router.get('/login', getLogin);
 router.post('/login', login);
 
 export default router;
+
+
