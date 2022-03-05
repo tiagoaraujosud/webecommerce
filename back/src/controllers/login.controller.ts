@@ -17,8 +17,7 @@ export function verifyJWT(req: Request, res: Response, next: NextFunction){
 /**GET LOGIN */
 export const getLogin = async (req: Request, res: Response): Promise<Response> => {
     verifyJWT;
-    return res.json([{email: 'admin', password: 'admin' }]);
-    
+    return res.json([{email: 'admin', password: 'admin' }]); 
 }
 
 /**LOGIN */
@@ -26,6 +25,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
  
     if (req.body.email === 'admin' && req.body.password === 'admin') {
         const token = jwt.sign({email: 'admin'}, SECRET, {expiresIn: 300});
+        res.json({message: 'Ok'});
         return res.json({auth:true, token});        
     }else 
     return res.status(401);

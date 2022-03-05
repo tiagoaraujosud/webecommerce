@@ -1,51 +1,79 @@
-import './Page.css';
 import React from 'react';
+import './Page.css';
+import api from '../services/api';
+
 import {Formik, Form, Field, ErrorMessage} from 'formik';
-import * as yup from 'yup';
 
-function Login() {
+function Login () {
+  const initialValues = {email: '', password: ''};
 
-  const handleClickLogin = (values) => console.log.values;
-
-  const validationLogin = yup.object().shape({
-    email: yup.string().email("Não é um email válido").required("Este campo é obrigatório!"),
-    password: yup.string().min(8, "A senha deve ter pelo menos 8 caracteres.").required("Este campo é obrigatório!")
-
-  });
+  const handleClickLogin = (values) => {
+    const data = {
+      email: values.email,
+      password: values.password
+    };
+    api.post('/login', data);
+  };
 
   return (
-    
     <div>
       <div className="container">
         <h1>Login</h1>
-        <Formik initialValues={{}} onSubmit={handleClickLogin} validationSchema={validationLogin}>
 
-        <Form className='login-form'>
+        <Formik 
+          initialValues={initialValues} 
+          onSubmit={(values) =>
+            {
+              handleClickLogin(values)
+            }
+          }
+        >
+          {props => 
+            {
+              const { values, handleSubmit, handleChange } = props
 
-          <div className='login-form-group'>
-          
-          <Field name='email' className='form-field' placeHolder='email'></Field>
+              return (
+                <Form className='login-form' onSubmit={handleSubmit}>
+                  <div className='login-form-group'>
+                    <Field 
+                      name='email' 
+                      className='form-field' 
+                      placeholder='email@email.com'
+                      value={values.email} 
+                      onChange={
+                        e => {
+                          handleChange(e);
+                        }
+                      }
+                    />
 
-          <ErrorMessage component='spam' name='email' className='form-error'></ErrorMessage>
+                    <ErrorMessage name='email' className='form- error'></ErrorMessage>
+                  </div>
 
-          </div>
+                  <div className='login-form-group'>
+                    <Field 
+                      name='password' 
+                      type='password' 
+                      className='form-field' 
+                      placeholder='password' 
+                      value={values.password} 
+                      onChange={
+                        e => {
+                          handleChange(e)
+                        }
+                      }
+                    />
 
+                    <ErrorMessage name='password' className='form-error'></ErrorMessage>
+                  </div>
 
-          <div className='login-form-group'>
-          
-          <Field name='password' className='form-field' placeHolder='senha'></Field>
-
-          <ErrorMessage component='spam' name='password' className='form-error'></ErrorMessage>
-
-          </div>
-
-          <button className='button' type='submit' >Login</button>
-
-        </Form>
-
+                  <button className='button' type='submit'>Enter</button>
+                </Form>
+              )
+            }
+          }
         </Formik>
       </div>
-    
     </div>
   );
 }

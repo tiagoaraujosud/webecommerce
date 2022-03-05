@@ -34,6 +34,7 @@ exports.getLogin = getLogin;
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (req.body.email === 'admin' && req.body.password === 'admin') {
         const token = jwt.sign({ email: 'admin' }, SECRET, { expiresIn: 300 });
+        res.json({ message: 'Ok' });
         return res.json({ auth: true, token });
     }
     else
