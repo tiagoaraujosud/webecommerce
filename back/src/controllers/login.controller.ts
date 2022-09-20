@@ -1,6 +1,6 @@
 import {NextFunction, Request, response, Response} from 'express';
-//import {QueryResult} from 'pg';
-//import {pool} from '../database';
+import {QueryResult} from 'pg';
+import {pool} from '../database';
 
 const jwt = require('jsonwebtoken');
 const SECRET = 'adminadmin';

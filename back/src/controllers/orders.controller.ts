@@ -2,12 +2,13 @@ import {Request, response, Response} from 'express';
 import {QueryResult} from 'pg';
 import {pool} from '../database';
 import { getUsers, getUserbyId } from './users.controller';
+import { getProductbyId } from './products.controller';
 
-/**GET ALL PRODUCTS */
-export const getProducts = async (req: Request, res: Response): Promise<Response> => {
-    const id_pedido = parseInt(req.params.id_pedido);
+
+/**GET ALL ORDERS */
+export const getOrders = async (req: Request, res: Response): Promise<Response> => {
+    const id_order = parseInt(req.params.id_order);
     const id_user = parseInt(req.params.id_user);
-    const id_product = parseInt(req.params.id_product);
     
     try{
         const response: QueryResult = await pool.query('SELECT * FROM pedidos WHERE');
@@ -21,8 +22,8 @@ export const getProducts = async (req: Request, res: Response): Promise<Response
     }
 }
 
-/**GET A PRODUCT BY ID */
-export const getProductbyId = async (req: Request, res: Response): Promise<Response> => {
+/**GET AN ORDER BY ID */
+export const getOrderbyId = async (req: Request, res: Response): Promise<Response> => {
     const id = parseInt(req.params.id)
 
     const response: QueryResult = await pool.query('SELECT * FROM products WHERE id = $1', [id])
@@ -30,24 +31,23 @@ export const getProductbyId = async (req: Request, res: Response): Promise<Respo
     return res.json(response.rows);
 }
 
-/**CREATE A NEW PRODUCT */
-export const createPedido = async (req: Request, res: Response): Promise<Response> => {
+/**CREATE A NEW ORDER */
+export const createOrder = async (req: Request, res: Response): Promise<Response> => {
     
-    const {id_user, id_product} = req.body;
+    const {user_id} = req.body;
 
-    //const response: QueryResult = await pool.query('INSERT INTO pedidos (id_user, id_product, pedido) VALUES ($1, $2, $3)', [id_user, id_product, 'Testing current_timestamp function']);
+    const response: QueryResult = await pool.query('INSERT INTO orders (user_id) VALUES ($1)', [user_id]);
 
     return res.json({
-        message: 'Pedido created successfully',
+        message: 'Order created successfully',
         body: {
-            id_user,
-            id_product
+            user_id
         }
     })
 }
 
-/**UPDATE A PRODUCT BY ID */
-export const updateProduct = async (req: Request, res: Response): Promise<Response> => {
+/**UPDATE AN ORDER BY ID */
+export const updateOrder = async (req: Request, res: Response): Promise<Response> => {
     const id = parseInt(req.params.id);
 
     const {name, price, img} = req.body;
@@ -57,11 +57,11 @@ export const updateProduct = async (req: Request, res: Response): Promise<Respon
     return res.json('Product ' + [id] + ' Updated successfully')
 }
 
-/**DELETE A PRODUCT BY ID */
-export const deleteProduct = async (req: Request, res: Response): Promise<Response> => {
+/**DELETE AN ORDER BY ID */
+export const deleteOrder = async (req: Request, res: Response): Promise<Response> => {
     const id = parseInt(req.params.id);
 
-    await pool.query('DELETE FROM products WHERE id = $1', [id]);
+    await pool.query('DELETE FROM orders WHERE id = $1', [id]);
 
     return res.json('Product ' + [id] + ' deleted successfully');
 }

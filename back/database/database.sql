@@ -13,10 +13,8 @@ CREATE TABLE products(
     img VARCHAR(20)
 );
 
-CREATE TABLE pedidos(
-    id_pedido SERIAL PRIMARY KEY,
-    id_user SERIAL REFERENCES users(id),
-    id_product SERIAL REFERENCES products(id),
+CREATE TABLE orders(
+    order_id SERIAL PRIMARY KEY,
+    user_id SERIAL REFERENCES users(id),
     data_pedido TIMESTAMP,
-    pedido INTEGER[][]
 );
