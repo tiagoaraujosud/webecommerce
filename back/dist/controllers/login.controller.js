@@ -10,8 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.logout = exports.login = exports.getLogin = exports.verifyJWT = void 0;
-//import {QueryResult} from 'pg';
-//import {pool} from '../database';
 const jwt = require('jsonwebtoken');
 const SECRET = 'adminadmin';
 function verifyJWT(req, res, next) {

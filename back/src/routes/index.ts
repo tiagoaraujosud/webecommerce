@@ -3,9 +3,8 @@ const router = Router();
 
 import {getUsers, getUserbyId, createUser, deleteUser, updateUser} from '../controllers/users.controller';
 import {getProducts, getProductbyId, createProduct, deleteProduct, updateProduct} from '../controllers/products.controller';
-import {createOrder} from '../controllers/orders.controller';
+import { createOrder } from '../controllers/orders.controller';
 import { getLogin, login } from '../controllers/login.controller';
-
 
 //Users routes
 router.get('/users', getUsers);
@@ -22,7 +21,7 @@ router.put('/products/:id', updateProduct);
 router.delete('/products/:id', deleteProduct);
 
 //Orders Routes
-router.post('/orders/:user_id', createOrder);
+router.post('/orders', createOrder);
 
 //Login Routes
 router.get('/login', getLogin);
