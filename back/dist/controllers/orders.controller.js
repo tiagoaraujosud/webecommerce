@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createOrder = void 0;
+exports.getOrders = exports.createOrder = void 0;
 const database_1 = require("../database");
 /**CREATE A NEW ORDER */
 const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -23,3 +23,14 @@ const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     });
 });
 exports.createOrder = createOrder;
+/**GET ALL USERS */
+const getOrders = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const response = yield database_1.pool.query('SELECT * FROM orders');
+        return res.status(200).json(response.rows);
+    }
+    catch (e) {
+        return res.status(500).json('Internal Server error');
+    }
+});
+exports.getOrders = getOrders;

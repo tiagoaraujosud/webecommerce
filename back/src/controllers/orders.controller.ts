@@ -16,3 +16,16 @@ export const createOrder = async (req: Request, res: Response): Promise<Response
         }
     })
 }
+
+/**GET ALL USERS */
+export const getOrders = async (req: Request, res: Response): Promise<Response> => {
+    try{
+        const response: QueryResult = await pool.query('SELECT * FROM orders');
+
+        return res.status(200).json(response.rows);
+
+    }catch(e){
+
+        return res.status(500).json('Internal Server error');
+    }
+}

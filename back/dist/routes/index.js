@@ -20,6 +20,7 @@ router.put('/products/:id', products_controller_1.updateProduct);
 router.delete('/products/:id', products_controller_1.deleteProduct);
 //Orders Routes
 router.post('/orders', orders_controller_1.createOrder);
+router.get('/orders', orders_controller_1.getOrders);
 //Login Routes
 router.get('/login', login_controller_1.getLogin);
 router.post('/login', login_controller_1.login);
