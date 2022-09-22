@@ -29,3 +29,12 @@ export const getOrders = async (req: Request, res: Response): Promise<Response> 
         return res.status(500).json('Internal Server error');
     }
 }
+
+/**GET A ORDER BY ID */
+export const getOrderbyId = async (req: Request, res: Response): Promise<Response> => {
+    const order_id = parseInt(req.params.id)
+
+    const response: QueryResult = await pool.query('SELECT * FROM orders WHERE order_id = $1', [order_id])
+
+    return res.json(response.rows);
+}
