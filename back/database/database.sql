@@ -15,6 +15,13 @@ CREATE TABLE products(
 
 CREATE TABLE orders(
     order_id SERIAL PRIMARY KEY,
-    user_id SERIAL REFERENCES users(id),
+    user_id INTEGER,
     data_pedido TIMESTAMP,
+);
+
+CREATE TABLE item_order(
+    id_product INTEGER,
+    id_order INTEGER,
+    quant INTEGER,
+    item_price MONEY
 );

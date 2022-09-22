@@ -17,7 +17,7 @@ export const createOrder = async (req: Request, res: Response): Promise<Response
     })
 }
 
-/**GET ALL USERS */
+/**GET ALL ORDERS */
 export const getOrders = async (req: Request, res: Response): Promise<Response> => {
     try{
         const response: QueryResult = await pool.query('SELECT * FROM orders');
