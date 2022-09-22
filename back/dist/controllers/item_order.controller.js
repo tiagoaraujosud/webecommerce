@@ -36,7 +36,8 @@ exports.getItemsbyOrderId = getItemsbyOrderId;
 /**GET AN ITEM ORDER BY USER ID */
 const getItemsbyUserId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id_user = parseInt(req.params.id);
-    const response = yield database_1.pool.query('SELECT * FROM item_order WHERE id_user = $1', [id_user]);
+    const id_order = yield database_1.pool.query('SELECT order_id FROM orders WHERE user_id = $1', [id_user]);
+    const response = yield database_1.pool.query('SELECT * FROM item_order WHERE id_order = $2', [id_order]);
     return res.json(response.rows);
 });
 exports.getItemsbyUserId = getItemsbyUserId;

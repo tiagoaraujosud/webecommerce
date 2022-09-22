@@ -33,7 +33,9 @@ export const getItemsbyOrderId = async (req: Request, res: Response): Promise<Re
 export const getItemsbyUserId = async (req: Request, res: Response): Promise<Response> => {
     const id_user = parseInt(req.params.id)
 
-    const response: QueryResult = await pool.query('SELECT * FROM item_order WHERE id_user = $1', [id_user])
+    const id_order = await pool.query('SELECT order_id FROM orders WHERE user_id = $1', [id_user]);
+
+    const response: QueryResult = await pool.query('SELECT * FROM item_order WHERE id_order = $2', [id_order])
 
     return res.json(response.rows);
 }
