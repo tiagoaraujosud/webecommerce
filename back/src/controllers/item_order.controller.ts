@@ -2,15 +2,6 @@ import {Request, response, Response} from 'express';
 import {QueryResult} from 'pg';
 import {pool} from '../database';
 
-/**GET A ORDER BY ID */
-export const getItemsbyOrderId = async (req: Request, res: Response): Promise<Response> => {
-    const id_order = parseInt(req.params.id)
-
-    const response: QueryResult = await pool.query('SELECT * FROM item_order WHERE id_order = $1', [id_order])
-
-    return res.json(response.rows);
-}
-
 /**CREATE A NEW ITEM ORDER */
 export const createItemOrder = async (req: Request, res: Response): Promise<Response> => {
     
@@ -27,4 +18,22 @@ export const createItemOrder = async (req: Request, res: Response): Promise<Resp
             item_price
         }
     })
+}
+
+/**GET AN ITEM ORDER BY ORDER ID */
+export const getItemsbyOrderId = async (req: Request, res: Response): Promise<Response> => {
+    const id_order = parseInt(req.params.id)
+
+    const response: QueryResult = await pool.query('SELECT * FROM item_order WHERE id_order = $1', [id_order])
+
+    return res.json(response.rows);
+}
+
+/**GET AN ITEM ORDER BY USER ID */
+export const getItemsbyUserId = async (req: Request, res: Response): Promise<Response> => {
+    const id_user = parseInt(req.params.id)
+
+    const response: QueryResult = await pool.query('SELECT * FROM item_order WHERE id_user = $1', [id_user])
+
+    return res.json(response.rows);
 }

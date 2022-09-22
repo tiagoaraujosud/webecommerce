@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteOrder = exports.getOrderbyId = exports.getOrders = exports.createOrder = void 0;
+exports.deleteOrder = exports.getOrderbyUserId = exports.getOrderbyId = exports.getOrders = exports.createOrder = void 0;
 const database_1 = require("../database");
 /**CREATE A NEW ORDER */
 const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -34,13 +34,20 @@ const getOrders = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getOrders = getOrders;
-/**GET A ORDER BY ID */
+/**GET AN ORDER BY ID */
 const getOrderbyId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const order_id = parseInt(req.params.id);
     const response = yield database_1.pool.query('SELECT * FROM orders WHERE order_id = $1', [order_id]);
     return res.json(response.rows);
 });
 exports.getOrderbyId = getOrderbyId;
+/**GET AN ORDER BY USER ID */
+const getOrderbyUserId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const user_id = parseInt(req.params.id);
+    const response = yield database_1.pool.query('SELECT * FROM orders WHERE user_id = $1', [user_id]);
+    return res.json(response.rows);
+});
+exports.getOrderbyUserId = getOrderbyUserId;
 /**DELETE AN ORDER BY ID */
 const deleteOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const order_id = parseInt(req.params.id);

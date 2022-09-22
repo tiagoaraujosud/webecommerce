@@ -9,21 +9,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createItemOrder = exports.getItemsbyOrderId = void 0;
+exports.getItemsbyUserId = exports.getItemsbyOrderId = exports.createItemOrder = void 0;
 const database_1 = require("../database");
-/**GET A ORDER BY ID */
-const getItemsbyOrderId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const id_order = parseInt(req.params.id);
-    const response = yield database_1.pool.query('SELECT * FROM item_order WHERE id_order = $1', [id_order]);
-    return res.json(response.rows);
-});
-exports.getItemsbyOrderId = getItemsbyOrderId;
 /**CREATE A NEW ITEM ORDER */
 const createItemOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id_product, id_order, quant, item_price } = req.body;
     const response = yield database_1.pool.query('INSERT INTO item_order (id_product, id_order, quant, item_price) VALUES ($1, $2, $3, $4)', [id_product, id_order, quant, item_price]);
     return res.json({
-        message: 'Order created successfully',
+        message: 'Item Order created successfully',
         body: {
             id_product,
             id_order,
@@ -33,3 +26,17 @@ const createItemOrder = (req, res) => __awaiter(void 0, void 0, void 0, function
     });
 });
 exports.createItemOrder = createItemOrder;
+/**GET AN ITEM ORDER BY ORDER ID */
+const getItemsbyOrderId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id_order = parseInt(req.params.id);
+    const response = yield database_1.pool.query('SELECT * FROM item_order WHERE id_order = $1', [id_order]);
+    return res.json(response.rows);
+});
+exports.getItemsbyOrderId = getItemsbyOrderId;
+/**GET AN ITEM ORDER BY USER ID */
+const getItemsbyUserId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id_user = parseInt(req.params.id);
+    const response = yield database_1.pool.query('SELECT * FROM item_order WHERE id_user = $1', [id_user]);
+    return res.json(response.rows);
+});
+exports.getItemsbyUserId = getItemsbyUserId;

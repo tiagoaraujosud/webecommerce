@@ -21,14 +21,15 @@ router.put('/products/:id', products_controller_1.updateProduct);
 router.delete('/products/:id', products_controller_1.deleteProduct);
 //Orders Routes
 router.get('/orders', orders_controller_1.getOrders);
-router.get('/orders/:id', orders_controller_1.getOrderbyId);
+router.get('/orders/order/:id', orders_controller_1.getOrderbyId);
+router.get('/orders/user/:id', orders_controller_1.getOrderbyUserId);
 router.post('/orders', orders_controller_1.createOrder);
 //router.put('/orders/:id', updateOrder);
 router.delete('/orders/:id', orders_controller_1.deleteOrder);
 //Item Order Routes
 router.post('/items', item_order_controller_1.createItemOrder);
-router.get('/items/:id', item_order_controller_1.getItemsbyOrderId);
-//router.get('/items/:id', getItemsbyUserId);
+router.get('/items/order/:id', item_order_controller_1.getItemsbyOrderId);
+router.get('/items/user/:id', item_order_controller_1.getItemsbyUserId);
 //router.put('/items/:id', updateItemsbyOrderId);
 //router.delete('/items/:id', deleteItemsbyOrderId);
 //Login Routes

@@ -30,11 +30,20 @@ export const getOrders = async (req: Request, res: Response): Promise<Response> 
     }
 }
 
-/**GET A ORDER BY ID */
+/**GET AN ORDER BY ID */
 export const getOrderbyId = async (req: Request, res: Response): Promise<Response> => {
     const order_id = parseInt(req.params.id)
 
     const response: QueryResult = await pool.query('SELECT * FROM orders WHERE order_id = $1', [order_id])
+
+    return res.json(response.rows);
+}
+
+/**GET AN ORDER BY USER ID */
+export const getOrderbyUserId = async (req: Request, res: Response): Promise<Response> => {
+    const user_id = parseInt(req.params.id)
+
+    const response: QueryResult = await pool.query('SELECT * FROM orders WHERE user_id = $1', [user_id])
 
     return res.json(response.rows);
 }
