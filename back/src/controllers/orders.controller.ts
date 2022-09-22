@@ -38,3 +38,12 @@ export const getOrderbyId = async (req: Request, res: Response): Promise<Respons
 
     return res.json(response.rows);
 }
+
+/**DELETE AN ORDER BY ID */
+export const deleteOrder = async (req: Request, res: Response): Promise<Response> => {
+    const order_id = parseInt(req.params.id);
+
+    const response: QueryResult = await pool.query('DELETE FROM orders WHERE order_id = $1', [order_id]);
+
+    return res.json('Order ' + [order_id] + ' deleted successfully');
+}
