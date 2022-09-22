@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getItemsbyOrderId = void 0;
+exports.createItemOrder = exports.getItemsbyOrderId = void 0;
 const database_1 = require("../database");
 /**GET A ORDER BY ID */
 const getItemsbyOrderId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -18,3 +18,18 @@ const getItemsbyOrderId = (req, res) => __awaiter(void 0, void 0, void 0, functi
     return res.json(response.rows);
 });
 exports.getItemsbyOrderId = getItemsbyOrderId;
+/**CREATE A NEW ITEM ORDER */
+const createItemOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id_product, id_order, quant, item_price } = req.body;
+    const response = yield database_1.pool.query('INSERT INTO item_order (id_product, id_order, quant, item_price) VALUES ($1, $2, $3, $4)', [id_product, id_order, quant, item_price]);
+    return res.json({
+        message: 'Order created successfully',
+        body: {
+            id_product,
+            id_order,
+            quant,
+            item_price
+        }
+    });
+});
+exports.createItemOrder = createItemOrder;

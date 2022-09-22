@@ -10,3 +10,21 @@ export const getItemsbyOrderId = async (req: Request, res: Response): Promise<Re
 
     return res.json(response.rows);
 }
+
+/**CREATE A NEW ITEM ORDER */
+export const createItemOrder = async (req: Request, res: Response): Promise<Response> => {
+    
+    const {id_product, id_order, quant, item_price } = req.body;
+
+    const response: QueryResult = await pool.query('INSERT INTO item_order (id_product, id_order, quant, item_price) VALUES ($1, $2, $3, $4)', [id_product, id_order, quant, item_price]);
+
+    return res.json({
+        message: 'Item Order created successfully',
+        body: {
+            id_product,
+            id_order,
+            quant,
+            item_price
+        }
+    })
+}

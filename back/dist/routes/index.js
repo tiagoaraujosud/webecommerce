@@ -26,6 +26,7 @@ router.post('/orders', orders_controller_1.createOrder);
 //router.put('/orders/:id', updateOrder);
 router.delete('/orders/:id', orders_controller_1.deleteOrder);
 //Item Order Routes
+router.post('/items', item_order_controller_1.createItemOrder);
 router.get('/items/:id', item_order_controller_1.getItemsbyOrderId);
 //router.get('/items/:id', getItemsbyUserId);
 //router.put('/items/:id', updateItemsbyOrderId);
