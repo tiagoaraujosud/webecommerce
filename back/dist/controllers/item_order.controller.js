@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getItemsbyUserId = exports.getItemsbyOrderId = exports.createItemOrder = void 0;
 const database_1 = require("../database");
-/**CREATE A NEW ITEM ORDER */
+/** CREATE A NEW ITEM ORDER */
 const createItemOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id_product, id_order, quant, item_price } = req.body;
     const response = yield database_1.pool.query('INSERT INTO item_order (id_product, id_order, quant, item_price) VALUES ($1, $2, $3, $4)', [id_product, id_order, quant, item_price]);
@@ -26,18 +26,17 @@ const createItemOrder = (req, res) => __awaiter(void 0, void 0, void 0, function
     });
 });
 exports.createItemOrder = createItemOrder;
-/**GET AN ITEM ORDER BY ORDER ID */
+/** GET AN ITEM ORDER BY ORDER ID */
 const getItemsbyOrderId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id_order = parseInt(req.params.id);
     const response = yield database_1.pool.query('SELECT * FROM item_order WHERE id_order = $1', [id_order]);
     return res.json(response.rows);
 });
 exports.getItemsbyOrderId = getItemsbyOrderId;
-/**GET AN ITEM ORDER BY USER ID */
+/** GET AN ITEM ORDER BY USER ID */
 const getItemsbyUserId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id_user = parseInt(req.params.id);
-    const id_order = yield database_1.pool.query('SELECT order_id FROM orders WHERE user_id = $1', [id_user]);
-    const response = yield database_1.pool.query('SELECT * FROM item_order WHERE id_order = $2', [id_order]);
+    const response = yield database_1.pool.query('SELECT user_id, order_id FROM orders CROSS JOIN item_order WHERE user_id = $1', [id_user]);
     return res.json(response.rows);
 });
 exports.getItemsbyUserId = getItemsbyUserId;

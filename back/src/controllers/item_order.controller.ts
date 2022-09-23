@@ -2,7 +2,7 @@ import {Request, response, Response} from 'express';
 import {QueryResult} from 'pg';
 import {pool} from '../database';
 
-/**CREATE A NEW ITEM ORDER */
+/** CREATE A NEW ITEM ORDER */
 export const createItemOrder = async (req: Request, res: Response): Promise<Response> => {
     
     const {id_product, id_order, quant, item_price } = req.body;
@@ -20,7 +20,7 @@ export const createItemOrder = async (req: Request, res: Response): Promise<Resp
     })
 }
 
-/**GET AN ITEM ORDER BY ORDER ID */
+/** GET AN ITEM ORDER BY ORDER ID */
 export const getItemsbyOrderId = async (req: Request, res: Response): Promise<Response> => {
     const id_order = parseInt(req.params.id)
 
@@ -29,13 +29,11 @@ export const getItemsbyOrderId = async (req: Request, res: Response): Promise<Re
     return res.json(response.rows);
 }
 
-/**GET AN ITEM ORDER BY USER ID */
+/** GET AN ITEM ORDER BY USER ID */
 export const getItemsbyUserId = async (req: Request, res: Response): Promise<Response> => {
     const id_user = parseInt(req.params.id)
 
-    const id_order = await pool.query('SELECT order_id FROM orders WHERE user_id = $1', [id_user]);
-
-    const response: QueryResult = await pool.query('SELECT * FROM item_order WHERE id_order = $2', [id_order])
+    const response: QueryResult = await pool.query('SELECT user_id, order_id FROM orders CROSS JOIN item_order WHERE user_id = $1', [id_user]);
 
     return res.json(response.rows);
 }
