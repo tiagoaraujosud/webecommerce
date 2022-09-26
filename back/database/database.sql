@@ -20,6 +20,7 @@ CREATE TABLE orders(
 );
 
 CREATE TABLE item_order(
+    id_item_order SERIAL PRIMARY KEY,
     id_product INTEGER,
     id_order INTEGER,
     quant INTEGER,

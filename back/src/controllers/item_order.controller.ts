@@ -14,7 +14,7 @@ export const createItemOrder = async (req: Request, res: Response): Promise<Resp
         body: {
             id_product,
             id_order,
-            quant,
+            quant, 
             item_price
         }
     })
@@ -34,6 +34,7 @@ export const getItemsbyUserId = async (req: Request, res: Response): Promise<Res
     const id_user = parseInt(req.params.id)
 
     const response: QueryResult = await pool.query('SELECT user_id, order_id FROM orders CROSS JOIN item_order WHERE user_id = $1', [id_user]);
-
+    
     return res.json(response.rows);
 }
+
