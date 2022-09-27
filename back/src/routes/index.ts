@@ -5,7 +5,7 @@ import {getUsers, getUserbyId, createUser, deleteUser, updateUser} from '../cont
 import {getProducts, getProductbyId, createProduct, deleteProduct, updateProduct} from '../controllers/products.controller';
 import { createOrder, getOrders, getOrderbyId, getOrderbyUserId, deleteOrder } from '../controllers/orders.controller';
 import { getLogin, login } from '../controllers/login.controller';
-import { createItemOrder, deleteItembyId, getItemsbyOrderId, getItemsbyUserId } from '../controllers/item_order.controller';
+import { createItemOrder, deleteItembyId, getItemsbyOrderId, getItemsbyUserId, updateItemsbyId } from '../controllers/item_order.controller';
 
 //Users routes
 router.get('/users', getUsers);
@@ -33,7 +33,7 @@ router.delete('/orders/:id', deleteOrder);
 router.post('/items', createItemOrder);
 router.get('/items/order/:id', getItemsbyOrderId);
 router.get('/items/user/:id', getItemsbyUserId);
-//router.put('/items/:id', updateItemsbyOrderId);
+router.put('/items/:id/:id_order', updateItemsbyId);
 router.delete('/items/:id/:id_order', deleteItembyId);
 
 

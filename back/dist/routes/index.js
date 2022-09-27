@@ -30,7 +30,7 @@ router.delete('/orders/:id', orders_controller_1.deleteOrder);
 router.post('/items', item_order_controller_1.createItemOrder);
 router.get('/items/order/:id', item_order_controller_1.getItemsbyOrderId);
 router.get('/items/user/:id', item_order_controller_1.getItemsbyUserId);
-//router.put('/items/:id', updateItemsbyOrderId);
+router.put('/items/:id/:id_order', item_order_controller_1.updateItemsbyId);
 router.delete('/items/:id/:id_order', item_order_controller_1.deleteItembyId);
 //Login Routes
 router.get('/login', login_controller_1.getLogin);

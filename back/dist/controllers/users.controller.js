@@ -42,7 +42,7 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     });
 });
 exports.createUser = createUser;
-/**UPDATE A USER BY ID */
+/** UPDATE A USER BY ID */
 const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id = parseInt(req.params.id);
     const { email, password } = req.body;

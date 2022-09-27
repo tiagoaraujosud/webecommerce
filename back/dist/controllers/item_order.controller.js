@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteItembyId = exports.getItemsbyUserId = exports.getItemsbyOrderId = exports.createItemOrder = void 0;
+exports.deleteItembyId = exports.updateItemsbyId = exports.getItemsbyUserId = exports.getItemsbyOrderId = exports.createItemOrder = void 0;
 const database_1 = require("../database");
 /** CREATE A NEW ITEM ORDER */
 const createItemOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -40,6 +40,15 @@ const getItemsbyUserId = (req, res) => __awaiter(void 0, void 0, void 0, functio
     return res.json(response.rows);
 });
 exports.getItemsbyUserId = getItemsbyUserId;
+/** UPDATE A ITEM BY ID */
+const updateItemsbyId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id_item_order = parseInt(req.params.id);
+    const id_order = parseInt(req.params.id_order);
+    const { quant } = req.body;
+    yield database_1.pool.query('UPDATE item_order SET quant = $1 WHERE id_item_order = $2 AND id_order = $3', [quant, id_item_order, id_order]);
+    return res.json('Item ' + [id_item_order] + ' Updated successfully');
+});
+exports.updateItemsbyId = updateItemsbyId;
 /** DELETE AN ITEM ORDER BY ID */
 const deleteItembyId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id_item_order = parseInt(req.params.id);

@@ -40,7 +40,7 @@ export const createUser = async (req: Request, res: Response): Promise<Response>
     })
 }
 
-/**UPDATE A USER BY ID */
+/** UPDATE A USER BY ID */
 export const updateUser = async (req: Request, res: Response): Promise<Response> => {
     const id = parseInt(req.params.id);
 

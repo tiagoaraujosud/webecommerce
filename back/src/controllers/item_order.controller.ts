@@ -38,6 +38,18 @@ export const getItemsbyUserId = async (req: Request, res: Response): Promise<Res
     return res.json(response.rows);
 }
 
+/** UPDATE THE QUANTITY OF AN ITEM BY ID */
+export const updateItemsbyId = async (req: Request, res: Response): Promise<Response> => {
+    const id_item_order = parseInt(req.params.id);
+    const id_order = parseInt(req.params.id_order);
+
+    const {quant} = req.body;
+
+    await pool.query('UPDATE item_order SET quant = $1 WHERE id_item_order = $2 AND id_order = $3', [quant, id_item_order, id_order]);
+
+    return res.json('Item ' + [id_item_order] + ' Updated successfully')
+}
+
 /** DELETE AN ITEM ORDER BY ID */
 export const deleteItembyId = async (req: Request, res: Response): Promise<Response> => {
     const id_item_order = parseInt(req.params.id);
