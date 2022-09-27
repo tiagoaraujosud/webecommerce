@@ -38,3 +38,13 @@ export const getItemsbyUserId = async (req: Request, res: Response): Promise<Res
     return res.json(response.rows);
 }
 
+/** DELETE AN ITEM ORDER BY ID */
+export const deleteItembyId = async (req: Request, res: Response): Promise<Response> => {
+    const id_item_order = parseInt(req.params.id);
+    const id_order = parseInt(req.params.id_order);
+
+    const response: QueryResult = await pool.query('DELETE FROM item_order WHERE id_item_order = $1 AND id_order = $2', [id_item_order, id_order]);
+
+    return res.json('Item Order ' + [id_item_order] + ' deleted successfully');
+}
+

@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getItemsbyUserId = exports.getItemsbyOrderId = exports.createItemOrder = void 0;
+exports.deleteItembyId = exports.getItemsbyUserId = exports.getItemsbyOrderId = exports.createItemOrder = void 0;
 const database_1 = require("../database");
 /** CREATE A NEW ITEM ORDER */
 const createItemOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -40,3 +40,11 @@ const getItemsbyUserId = (req, res) => __awaiter(void 0, void 0, void 0, functio
     return res.json(response.rows);
 });
 exports.getItemsbyUserId = getItemsbyUserId;
+/** DELETE AN ITEM ORDER BY ID */
+const deleteItembyId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id_item_order = parseInt(req.params.id);
+    const id_order = parseInt(req.params.id_order);
+    const response = yield database_1.pool.query('DELETE FROM item_order WHERE id_item_order = $1 AND id_order = $2', [id_item_order, id_order]);
+    return res.json('Item Order ' + [id_item_order] + ' deleted successfully');
+});
+exports.deleteItembyId = deleteItembyId;
