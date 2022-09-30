@@ -40,7 +40,7 @@ const getItemsbyUserId = (req, res) => __awaiter(void 0, void 0, void 0, functio
     return res.json(response.rows);
 });
 exports.getItemsbyUserId = getItemsbyUserId;
-/** UPDATE A ITEM BY ID */
+/** UPDATE THE QUANTITY OF AN ITEM BY ID */
 const updateItemsbyId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id_item_order = parseInt(req.params.id);
     const id_order = parseInt(req.params.id_order);
