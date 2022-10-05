@@ -20,7 +20,7 @@ router.post('/products', products_controller_1.createProduct);
 router.put('/products/:id', products_controller_1.updateProduct);
 router.delete('/products/:id', products_controller_1.deleteProduct);
 //Orders Routes
-router.get('/orders', orders_controller_1.getOrders);
+router.get('/orders', login_controller_1.verifyJWT, orders_controller_1.getOrders);
 router.get('/orders/order/:id', orders_controller_1.getOrderbyId);
 router.get('/orders/user/:id', orders_controller_1.getOrderbyUserId);
 router.post('/orders', orders_controller_1.createOrder);

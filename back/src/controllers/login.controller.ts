@@ -17,7 +17,7 @@ export function verifyJWT(req: Request, res: Response, next: NextFunction){
 /**GET LOGIN */
 export const getLogin = async (req: Request, res: Response): Promise<Response> => {
     verifyJWT;
-    return res.json([{email: 'admin', password: 'admin' }]); 
+    return res.json(req.body.email); 
 }
 
 /**LOGIN AUTHENTICATION */

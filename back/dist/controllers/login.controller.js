@@ -26,15 +26,14 @@ exports.verifyJWT = verifyJWT;
 /**GET LOGIN */
 const getLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     verifyJWT;
-    return res.json([{ email: 'admin', password: 'admin' }]);
+    return res.json(req.body.email);
 });
 exports.getLogin = getLogin;
-/**LOGIN */
+/**LOGIN AUTHENTICATION */
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
     const user = yield database_1.pool.query('SELECT * FROM users WHERE email = $1', [email]);
     const user_pass = yield database_1.pool.query('SELECT * FROM users WHERE password = $1', [password]);
-    console.log(user.rows[0].password);
     if (req.body.email === user.rows[0].email && req.body.password === user.rows[0].password) {
         const token = jwt.sign({ email: email }, SECRET, { expiresIn: 600 });
         return res.json({ auth: true, token });
