@@ -32,14 +32,16 @@ exports.getLogin = getLogin;
 /**LOGIN AUTHENTICATION */
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
-    const user = yield database_1.pool.query('SELECT FROM users WHERE email = $1', [email]);
-    const user_pass = yield database_1.pool.query('SELECT FROM users WHERE password = $1', [password]);
-    if (req.body.email === user && req.body.password === user_pass) {
+    const user = yield database_1.pool.query('SELECT email FROM users WHERE email = $1', [email]);
+    const user_pass = yield database_1.pool.query('SELECT password FROM users WHERE password = $1', [password]);
+    if (req.body.email === user.rows[0].email && req.body.password === user_pass.rows[0].password) {
         const token = jwt.sign({ email: email }, SECRET, { expiresIn: 600 });
+        console.log('Login Efetuado com sucesso!');
         return res.json({ auth: true, token });
     }
-    else
+    else {
         return res.status(401);
+    }
 });
 exports.login = login;
 /**LOGOUT */
