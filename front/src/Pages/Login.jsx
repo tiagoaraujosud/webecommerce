@@ -12,6 +12,7 @@ function Login () {
       email: values.email,
       password: values.password
     };
+    console.log(data);
     api.post('/login', data);
   };
 
@@ -30,10 +31,13 @@ function Login () {
         >
           {props => 
             {
-              const { values, handleSubmit, handleChange } = props
+              const { values, handleChange, handleSubmit } = props
 
               return (
-                <Form className='login-form' onSubmit={handleSubmit}>
+                <Form className='login-form' onSubmit={e => {
+                  e.preventDefault();
+                  handleSubmit();
+                }}>
                   <div className='login-form-group'>
                     <Field 
                       name='email' 

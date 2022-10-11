@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Page.css';
 import api from '../services/api';
-
-import Menu from '../Components/Menu';
-
 
 class Products extends React.Component{
 
@@ -21,14 +18,22 @@ class Products extends React.Component{
   render(){
     return(
       <div>
-        {this.state.produtos.map(
-          produto=>
-          <div key={produto.id}> 
-          
-            {produto.name} - {produto.price} 
-          
-          </div>
-        )}
+
+        <h1>Products List</h1>
+
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
+        <div>
+          {this.state.produtos.map(
+            produto=>
+            <tr key={produto.id}>
+              <th>{produto.name}</th>
+              <th>{produto.price}</th>
+            </tr>
+          )}
+        </div>
       </div>
     )
   }
