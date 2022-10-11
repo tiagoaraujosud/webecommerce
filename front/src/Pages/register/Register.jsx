@@ -1,43 +1,41 @@
 import React from 'react';
-import './Page.css';
-import api from '../services/api';
+import '../Page.css';
+import api from '../../services/api';
 
 import {Formik, Form, Field, ErrorMessage} from 'formik';
+import registerSchema from '../../Validation/registerValidation'
 
-function Login () {
+function Register () {
   const initialValues = {email: '', password: ''};
 
-  const handleClickLogin = (values) => {
+  const handleClickRegister = (values) => {
     const data = {
       email: values.email,
       password: values.password
     };
-    console.log(data);
-    api.post('/login', data);
+    api.post('/users', data);
   };
 
   return (
     <div>
       <div className="container">
-        <h1>Login</h1>
+        <h1>Registro</h1>
 
         <Formik 
           initialValues={initialValues} 
+          validationSchema={registerSchema}
           onSubmit={(values) =>
             {
-              handleClickLogin(values)
+              handleClickRegister(values)
             }
           }
         >
           {props => 
             {
-              const { values, handleChange, handleSubmit } = props
+              const { values, handleSubmit, handleChange } = props
 
               return (
-                <Form className='login-form' onSubmit={e => {
-                  e.preventDefault();
-                  handleSubmit();
-                }}>
+                <Form className='login-form' onSubmit={handleSubmit}>
                   <div className='login-form-group'>
                     <Field 
                       name='email' 
@@ -71,7 +69,7 @@ function Login () {
                     <ErrorMessage name='password' className='form-error'></ErrorMessage>
                   </div>
 
-                  <button className='button' type='submit'>Enter</button>
+                  <button className='button' type='submit'>Save</button>
                 </Form>
               )
             }
@@ -82,4 +80,4 @@ function Login () {
   );
 }
 
-export default Login;
+export default Register;

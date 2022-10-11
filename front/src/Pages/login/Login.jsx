@@ -1,41 +1,44 @@
 import React from 'react';
-import './Page.css';
-import api from '../services/api';
+import '../Page.css';
+import api from '../../services/api';
 
 import {Formik, Form, Field, ErrorMessage} from 'formik';
-import registerSchema from '../Validation/registerValidation'
 
-function Register () {
+function Login () {
   const initialValues = {email: '', password: ''};
 
-  const handleClickRegister = (values) => {
+  const handleClickLogin = async (values) => {
     const data = {
       email: values.email,
       password: values.password
     };
-    api.post('/users', data);
+    const response = await api.post('/login', data);
+    localStorage.setItem('token', response.data.token);
+
   };
 
   return (
     <div>
       <div className="container">
-        <h1>Registro</h1>
+        <h1>Login</h1>
 
         <Formik 
           initialValues={initialValues} 
-          validationSchema={registerSchema}
           onSubmit={(values) =>
             {
-              handleClickRegister(values)
+              handleClickLogin(values)
             }
           }
         >
           {props => 
             {
-              const { values, handleSubmit, handleChange } = props
+              const { values, handleChange, handleSubmit } = props
 
               return (
-                <Form className='login-form' onSubmit={handleSubmit}>
+                <Form className='login-form' onSubmit={e => {
+                  e.preventDefault();
+                  handleSubmit();
+                }}>
                   <div className='login-form-group'>
                     <Field 
                       name='email' 
@@ -69,7 +72,7 @@ function Register () {
                     <ErrorMessage name='password' className='form-error'></ErrorMessage>
                   </div>
 
-                  <button className='button' type='submit'>Save</button>
+                  <button className='button' type='submit'>Enter</button>
                 </Form>
               )
             }
@@ -80,4 +83,4 @@ function Register () {
   );
 }
 
-export default Register;
+export default Login;
