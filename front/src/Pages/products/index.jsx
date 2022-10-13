@@ -1,5 +1,4 @@
 import React from 'react';
-//import '../Page.css';
 import api from '../../services/api';
 
 class Products extends React.Component{

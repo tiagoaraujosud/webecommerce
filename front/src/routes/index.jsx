@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom';
 
 import Menu from '../Components/menu';
+import Footer from '../Components/footer';
 import Home from '../Pages/home';
 import Register from '../Pages/register';
 import Login from '../Pages/login';
@@ -18,6 +19,7 @@ const Routes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products />} />
       </Switch>
+      <Footer />
     </BrowserRouter>    
   )
 }
