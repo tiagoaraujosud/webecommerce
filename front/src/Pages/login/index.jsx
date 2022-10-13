@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Page.css';
+//import '../Page.css';
 import api from '../../services/api';
 
 import {Formik, Form, Field, ErrorMessage} from 'formik';

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Page.css';
+//import '../Page.css';
 import api from '../../services/api';
 
 import {Formik, Form, Field, ErrorMessage} from 'formik';
@@ -19,7 +19,7 @@ function Register () {
   return (
     <div>
       <div className="container">
-        <h1>Registro</h1>
+        <h1>Sign Up</h1>
 
         <Formik 
           initialValues={initialValues} 

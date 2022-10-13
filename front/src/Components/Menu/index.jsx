@@ -1,4 +1,4 @@
-//import 'styles.css';
+import './styles.css';
 import React from 'react';
 
 import { Link } from 'react-router-dom';
@@ -6,20 +6,26 @@ import { Link } from 'react-router-dom';
 function Menu() {
   return(
     <>
-    <div class='container'>
-      <div>
-        <Link to='/'>Home</Link>
-      </div>
-      <div>
-        <Link to='/register'>Register</Link>
-      </div>
-      <div>
-        <Link to='/login'>Login</Link>
-      </div>
-      <div>
-        <Link to='/products'>Products</Link>
-      </div>
-    </div>  
+    <nav>
+      <ul class='menu'>
+        <li class="logo"><a href="#">WebCommerce</a></li>
+        <li class='menu__item'>
+          <Link to='/'>Home</Link>
+        </li>
+
+        <li class='menu__item'>
+          <Link to='/products'>Products</Link>
+        </li>
+
+        <li class='item button secondary'>
+          <Link to='/register'>Sign Up</Link>
+        </li>
+
+        <li class='item.button'>
+          <Link to='/login'>Log In</Link>
+        </li>
+      </ul>  
+    </nav>
     </>
   )
 }

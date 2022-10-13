@@ -1,12 +1,20 @@
+import path from 'path';
+import dotenv from 'dotenv';
 import express from 'express';
+import cookieParser from 'cookie-parser';
 const app = express();
 const cors = require('cors');
 
 import indexRoutes from './routes/index'
 
+
 //middlewares
 
+dotenv.config();
+
 app.use(express.json());
+
+app.use(cookieParser());
 
 app.use(cors());
 
