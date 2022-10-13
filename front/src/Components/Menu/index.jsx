@@ -1,15 +1,25 @@
-import '../../App.css';
+//import 'styles.css';
 import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-const Menu = () => {
+function Menu() {
   return(
     <>
-      <Link to='/'>Home</Link>
-      <Link to='/register'>Register</Link>
-      <Link to='/login'>Login</Link>
-      <Link to='/products'>Products</Link>
+    <div class='container'>
+      <div>
+        <Link to='/'>Home</Link>
+      </div>
+      <div>
+        <Link to='/register'>Register</Link>
+      </div>
+      <div>
+        <Link to='/login'>Login</Link>
+      </div>
+      <div>
+        <Link to='/products'>Products</Link>
+      </div>
+    </div>  
     </>
   )
 }

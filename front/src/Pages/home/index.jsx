@@ -2,7 +2,7 @@ import React from 'react';
 import '../Page.css';
 
 
-const Home = () => {
+function Home() {
   return (
     <div className = 'Page1'>
       Home
