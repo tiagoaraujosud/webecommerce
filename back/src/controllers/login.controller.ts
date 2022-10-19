@@ -1,6 +1,7 @@
 import {NextFunction, Request, response, Response} from 'express';
 import {QueryResult} from 'pg';
 import {pool} from '../database';
+import {LocalStorage} from 'node-localstorage';
 
 const jwt = require('jsonwebtoken');
 const SECRET = 'adminadmin';
@@ -12,7 +13,7 @@ export function verifyJWT(req: Request, res: Response, next: NextFunction){
         req.body.email = decoded.email;
         next();
     })
-    
+      
 }
 
 /**GET LOGIN */
@@ -33,10 +34,18 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
     if (req.body.email === user.rows[0].email && req.body.password === user_pass.rows[0].password) {
         const token = jwt.sign({email: email}, SECRET, {expiresIn: 600});
         console.log('Login Efetuado com sucesso!');
+        
+        if (typeof localStorage === "undefined" || localStorage === null) {
+            var localStorage = require('node-localstorage').LocalStorage;
+            localStorage = new LocalStorage('./scratch');
+         }
+         localStorage.setItem('token', token);
         return res.json({auth:true, token});        
     }else{
         return res.status(401);
     }
+
+    
 }
 
 /**LOGOUT */

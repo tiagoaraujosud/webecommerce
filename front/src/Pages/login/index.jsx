@@ -12,8 +12,8 @@ function Login () {
       password: values.password
     };
     const response = await api.post('/login', data);
-    localStorage.setItem('token', response.data.token);
-
+    const token = localStorage.getItem('token', response);
+    
   };
 
   return (
