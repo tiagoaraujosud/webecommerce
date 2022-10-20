@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import api from '../../services/api';
 
 import {Formik, Form, Field, ErrorMessage} from 'formik';
@@ -13,7 +13,9 @@ function Login () {
     };
     const response = await api.post('/login', data);
     const token = localStorage.getItem('token', response);
-    
+    if(token){
+      window.location.href = '/products';
+    }
   };
 
   return (

@@ -26,6 +26,7 @@ function Register () {
           onSubmit={(values) =>
             {
               handleClickRegister(values)
+              window.location.href = '/login';
             }
           }
         >
