@@ -15,6 +15,7 @@ function Login () {
     const token = localStorage.getItem('token', response);
     if(token){
       window.location.href = '/products';
+      console.log(token);
     }
   };
 

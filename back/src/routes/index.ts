@@ -16,8 +16,8 @@ router.delete('/users/:id', getLogin, deleteUser);
 
 //Products routes
 router.get('/products', getProducts);
-router.get('/products/:id', getProductbyId);
-router.post('/products', getLogin, createProduct);
+router.get('/products/:id', getLogin,getProductbyId);
+router.post('/products', createProduct);
 router.put('/products/:id', getLogin, updateProduct);
 router.delete('/products/:id', getLogin, deleteProduct);
 

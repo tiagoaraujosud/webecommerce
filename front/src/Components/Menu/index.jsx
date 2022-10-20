@@ -13,11 +13,11 @@ function Menu() {
           <Link to='/'>Home</Link>
         </li>
 
-        <li class='menu__item'>
+        <li class='item.button'>
           <Link to='/products'>Products</Link>
         </li>
 
-        <li class='item button secondary'>
+        <li class='item.button'>
           <Link to='/register'>Sign Up</Link>
         </li>
 

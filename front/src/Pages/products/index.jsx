@@ -1,5 +1,6 @@
 import React from 'react';
 import api from '../../services/api';
+import './styles.css';
 
 class Products extends React.Component{
 
@@ -16,23 +17,29 @@ class Products extends React.Component{
 
   render(){
     return(
-      <div>
+      <div class = 'container'>
+        <section class='column'>
 
-        <h1>Products List</h1>
+          <h1>Products List</h1>
 
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-        </tr>
-        <div>
-          {this.state.produtos.map(
-            produto=>
-            <tr key={produto.id}>
-              <th>{produto.name}</th>
-              <th>{produto.price}</th>
-            </tr>
-          )}
-        </div>
+          <tr>
+            <div class = 'table'>
+              <th>Name</th>
+              <th>Price</th>
+            </div>
+          </tr>
+          <div class = 'eachproduct'>
+            {this.state.produtos.map(
+              produto=>
+              <tr key={produto.id}>
+                <div class = 'item'>
+                  <th>{produto.name}</th>
+                  <th>{produto.price}</th>
+                </div>
+              </tr>
+            )}
+          </div>
+        </section>
       </div>
     )
   }

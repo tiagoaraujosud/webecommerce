@@ -15,8 +15,8 @@ router.put('/users/:id', login_controller_1.getLogin, users_controller_1.updateU
 router.delete('/users/:id', login_controller_1.getLogin, users_controller_1.deleteUser);
 //Products routes
 router.get('/products', products_controller_1.getProducts);
-router.get('/products/:id', products_controller_1.getProductbyId);
-router.post('/products', login_controller_1.getLogin, products_controller_1.createProduct);
+router.get('/products/:id', login_controller_1.getLogin, products_controller_1.getProductbyId);
+router.post('/products', products_controller_1.createProduct);
 router.put('/products/:id', login_controller_1.getLogin, products_controller_1.updateProduct);
 router.delete('/products/:id', login_controller_1.getLogin, products_controller_1.deleteProduct);
 //Orders Routes
