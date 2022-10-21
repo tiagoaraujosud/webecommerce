@@ -8,7 +8,7 @@ const orders_controller_1 = require("../controllers/orders.controller");
 const login_controller_1 = require("../controllers/login.controller");
 const item_order_controller_1 = require("../controllers/item_order.controller");
 //Users routes
-router.get('/users', login_controller_1.getLogin, users_controller_1.getUsers);
+router.get('/users', users_controller_1.getUsers);
 router.get('/users/:id', login_controller_1.getLogin, users_controller_1.getUserbyId);
 router.post('/users', users_controller_1.createUser);
 router.put('/users/:id', login_controller_1.getLogin, users_controller_1.updateUser);

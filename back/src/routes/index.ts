@@ -8,7 +8,7 @@ import { getLogin, login, verifyJWT } from '../controllers/login.controller';
 import { createItemOrder, deleteItembyId, getItemsbyOrderId, getItemsbyUserId, updateItemsbyId } from '../controllers/item_order.controller';
 
 //Users routes
-router.get('/users', getLogin, getUsers);
+router.get('/users', getUsers);
 router.get('/users/:id', getLogin, getUserbyId);
 router.post('/users', createUser);
 router.put('/users/:id', getLogin, updateUser);
