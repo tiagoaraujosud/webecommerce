@@ -7,21 +7,21 @@ function Menu() {
   return(
     <>
     <nav>
-      <ul class='menu'>
-        <li class="logo"><a href="#">WebCommerce</a></li>
-        <li class='menu__item'>
+      <ul className='menu'>
+        <li className="logo"><a href="#">WebCommerce</a></li>
+        <li className='menu__item'>
           <Link to='/'>Home</Link>
         </li>
 
-        <li class='item.button'>
+        <li className='item.button'>
           <Link to='/products'>Products</Link>
         </li>
 
-        <li class='item.button'>
+        <li className='item.button'>
           <Link to='/register'>Sign Up</Link>
         </li>
 
-        <li class='item.button'>
+        <li className='item.button'>
           <Link to='/login'>Log In</Link>
         </li>
       </ul>  

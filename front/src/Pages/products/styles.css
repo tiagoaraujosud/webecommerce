@@ -1,6 +1,7 @@
 .column {
 	flex-direction: column;
 	justify-content: space-around;
+	text-align: center;
 }
 
 /* Flex Container */
@@ -19,8 +20,7 @@
 	justify-content: space-around;
 	flex-wrap: nowrap;
 	margin: 5px;
-	background: rgb(102, 97, 96);
-	text-align: center;
+	background: rgb(253, 252, 252);
 	font-size: 1.5em;
 }
 .table {
@@ -40,6 +40,16 @@
 	font-size: 1.5em;
 }
 
+.eachproduct{
+	font-size: 20px;
+    padding: 7.5px 10px 7.5px 0;
+}
+
+body {
+	font-family: monospace;
+	color: #333;
+}
+
 h1 {
 	text-align: center;
 	margin: 20px 0 0 0;
@@ -47,7 +57,8 @@ h1 {
 	font-weight: normal;
 }
 
-body {
-	font-family: monospace;
-	color: #333;
+img{
+	width: 30px;
+	height:30px;
 }
+

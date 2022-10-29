@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 
 
 function AddProducts () {
+
   const initialValues = {name: '', price: ''};
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("email");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+      console.log("User is Logged in!")
+    }
+  }, []);
 
   const handleClickRegister = (values) => {
+    //verificar se o usuário está logado
     const data = {
       name: values.name,
       price: values.price

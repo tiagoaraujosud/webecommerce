@@ -7,7 +7,6 @@ class Products extends React.Component{
   state={
     produtos: []
   }
-
   componentDidMount(){
     api.get('/products').then(res=>{
       const dadosProdutos=res.data
@@ -16,31 +15,25 @@ class Products extends React.Component{
   }
 
   render(){
+    
     return(
-      <div class = 'container'>
-        <section class='column'>
+  
+      <table className='column'>
 
-          <h1>Products List</h1>
-
+        <h1>Products List</h1>
           <tr>
-            <div class = 'table'>
               <th>Name</th>
               <th>Price</th>
-            </div>
           </tr>
-          <div class = 'eachproduct'>
-            {this.state.produtos.map(
-              produto=>
-              <tr key={produto.id}>
-                <div class = 'item'>
-                  <th>{produto.name}</th>
-                  <th>{produto.price}</th>
-                </div>
-              </tr>
-            )}
-          </div>
-        </section>
-      </div>
+          {this.state.produtos.map(
+            produto=>
+            <tr key={produto.id}>
+              <th>{produto.name}</th>
+              <th>{produto.price}</th>
+              <th><a className="logo" href=""><img src='https://st.depositphotos.com/1005920/1832/i/600/depositphotos_18323389-stock-photo-shopping-cart-green-glossy-icon.jpg'></img></a></th>
+            </tr>
+          )}
+      </table>
     )
   }
 }

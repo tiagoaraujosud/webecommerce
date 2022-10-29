@@ -17,22 +17,22 @@ class User extends React.Component{
 
   render(){
     return(
-      <div class = 'container'>
-        <section class='column'>
+      <div className = 'container'>
+        <section className ='column'>
 
           <h1>Users List</h1>
 
           <tr>
-            <div class = 'table'>
+            <div className = 'table'>
               <th>Id</th>
               <th>Name</th>
             </div>
           </tr>
-          <div class = 'user'>
+          <div className = 'user'>
             {this.state.users.map(
               user=>
               <tr key={user.id}>
-                <div class = 'user'>
+                <div className = 'user'>
                   <th>{user.id}</th>
                   <th>{user.email}</th>
                 </div>
