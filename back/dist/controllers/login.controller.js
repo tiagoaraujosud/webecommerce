@@ -11,7 +11,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.logout = exports.login = exports.getLogin = exports.verifyJWT = void 0;
 const database_1 = require("../database");
-const node_localstorage_1 = require("node-localstorage");
 const jwt = require('jsonwebtoken');
 const SECRET = 'adminadmin';
 function verifyJWT(req, res, next) {
@@ -24,6 +23,7 @@ function verifyJWT(req, res, next) {
     });
 }
 exports.verifyJWT = verifyJWT;
+;
 /**GET LOGIN */
 const getLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     verifyJWT;
@@ -36,18 +36,14 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield database_1.pool.query('SELECT email FROM users WHERE email = $1', [email]);
     const user_pass = yield database_1.pool.query('SELECT password FROM users WHERE password = $1', [password]);
     if (req.body.email === user.rows[0].email && req.body.password === user_pass.rows[0].password) {
-        const token = jwt.sign({ email: email }, SECRET, { expiresIn: 600 });
+        const token = jwt.sign({ email: email }, SECRET, { expiresIn: 180 });
         console.log('Login Efetuado com sucesso!');
-        if (typeof localStorage === "undefined" || localStorage === null) {
-            var localStorage = require('node-localstorage').LocalStorage;
-            localStorage = new node_localstorage_1.LocalStorage('./scratch');
-        }
-        localStorage.setItem('token', token);
-        return res.json({ auth: true, token });
+        return res.json(token);
     }
     else {
         return res.status(401);
     }
+    ;
 });
 exports.login = login;
 /**LOGOUT */

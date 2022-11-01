@@ -12,10 +12,10 @@ function Login () {
       password: values.password
     };
     const response = await api.post('/login', data);
-    const token = localStorage.getItem('token', response);
+    const token = JSON.stringify(response.data);
+    window.localStorage.setItem('token', token); 
     if(token){
       window.location.href = '/products';
-      console.log(token);
     }
   };
 

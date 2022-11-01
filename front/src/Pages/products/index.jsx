@@ -8,10 +8,17 @@ class Products extends React.Component{
     produtos: []
   }
   componentDidMount(){
-    api.get('/products').then(res=>{
-      const dadosProdutos=res.data
-      this.setState({produtos:dadosProdutos})
-    })
+    const getToken = window.sessionStorage.getItem('token');
+    const token = JSON.stringify(getToken);
+    if(token){
+      api.get('/products').then(res=>{
+        const dadosProdutos=res.data
+        this.setState({produtos:dadosProdutos})
+      });
+    }
+    else{
+      window.location.href = '/login';
+    }
   }
 
   render(){

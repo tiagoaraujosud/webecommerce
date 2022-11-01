@@ -943,7 +943,7 @@ negotiator@0.6.3:
 
 node-localstorage@^2.2.1:
   version "2.2.1"
-  resolved "https://registry.npmjs.org/node-localstorage/-/node-localstorage-2.2.1.tgz"
+  resolved "https://registry.yarnpkg.com/node-localstorage/-/node-localstorage-2.2.1.tgz#869723550a4883e426cb391d2df0b563a51c7c1c"
   integrity sha512-vv8fJuOUCCvSPjDjBLlMqYMHob4aGjkmrkaE42/mZr0VT+ZAU10jRF8oTnX9+pgU9/vYJ8P7YT3Vd6ajkmzSCw==
   dependencies:
     write-file-atomic "^1.1.4"
@@ -1434,6 +1434,11 @@ tree-kill@^1.2.2:
   version "1.2.2"
   resolved "https://registry.npmjs.org/tree-kill/-/tree-kill-1.2.2.tgz"
   integrity sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==
+
+ts-localstorage@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ts-localstorage/-/ts-localstorage-2.0.0.tgz#3835d3345e818b0730e1336f8d475d210385542b"
+  integrity sha512-fBgRbLFOrkaSUt1KsHX0nN6da7itB641vOvXg7MTZikc/fPvK6ZECuXIpRBmToaLz39k616cv9hYPCZAcB55TQ==
 
 ts-node-dev@^2.0.0:
   version "2.0.0"
