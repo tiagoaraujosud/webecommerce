@@ -8,8 +8,7 @@ class Products extends React.Component{
     produtos: []
   }
   componentDidMount(){
-    const getToken = window.sessionStorage.getItem('token');
-    const token = JSON.stringify(getToken);
+    const token = window.localStorage.getItem('token');
     if(token){
       api.get('/products').then(res=>{
         const dadosProdutos=res.data
