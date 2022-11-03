@@ -22,7 +22,7 @@ router.put('/products/:id', getLogin, updateProduct);
 router.delete('/products/:id', getLogin, deleteProduct);
 
 //Orders Routes
-router.get('/orders', getLogin, getOrders);
+router.get('/orders', getOrders);
 router.get('/orders/order/:id', getLogin, getOrderbyId);
 router.get('/orders/user/:id', getLogin, getOrderbyUserId);
 router.post('/orders', getLogin, createOrder);
@@ -30,8 +30,8 @@ router.delete('/orders/:id', getLogin, deleteOrder);
 
 //Item Order Routes
 router.post('/items', getLogin,  createItemOrder);
-router.get('/items/order/:id', getLogin, getItemsbyOrderId);
-router.get('/items/user/:id', getLogin, getItemsbyUserId);
+router.get('/items/order/:id', getItemsbyOrderId);
+router.get('/items/user/:id', getItemsbyUserId);
 router.put('/items/:id/:id_order', getLogin, updateItemsbyId);
 router.delete('/items/:id/:id_order', getLogin, deleteItembyId);
 
