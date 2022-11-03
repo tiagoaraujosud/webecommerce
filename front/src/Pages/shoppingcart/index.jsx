@@ -38,7 +38,7 @@ class Cart extends React.Component{
           {this.state.items.map(
             produto=>
             <tr key={produto.id_product}>
-              <th>{produto.id_order}</th>
+              <th>{produto.id_product}</th>
               <th>{produto.quant}</th>
               <th>{produto.item_price}</th>
             </tr>
