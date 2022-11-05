@@ -1,7 +1,7 @@
 import {application, Router} from 'express';
 const router = Router();
 
-import {getUsers, getUserbyId, createUser, deleteUser, updateUser} from '../controllers/users.controller';
+import {getUsers, getUserbyId, createUser, deleteUser, updateUser, getUserbyEmail} from '../controllers/users.controller';
 import {getProducts, getProductbyId, createProduct, deleteProduct, updateProduct} from '../controllers/products.controller';
 import { createOrder, getOrders, getOrderbyId, getOrderbyUserId, deleteOrder } from '../controllers/orders.controller';
 import { getLogin, login, verifyJWT } from '../controllers/login.controller';
@@ -9,7 +9,8 @@ import { createItemOrder, deleteItembyId, getItemsbyOrderId, getItemsbyUserId, u
 
 //Users routes
 router.get('/users', getUsers);
-router.get('/users/:id', getLogin, getUserbyId);
+router.get('/users/:id', getUserbyId);
+router.get('/users/email/:email', getUserbyEmail);
 router.post('/users', createUser);
 router.put('/users/:id', getLogin, updateUser);
 router.delete('/users/:id', getLogin, deleteUser);

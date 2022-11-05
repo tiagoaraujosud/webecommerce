@@ -26,6 +26,10 @@ function Menu() {
         </li>
 
         <li className='item.button'>
+          <Link to='/cart'>My Shoppingcart</Link>
+        </li>
+
+        <li className='item.button'>
           <Link to='/register'>Sign Up</Link>
         </li>
 

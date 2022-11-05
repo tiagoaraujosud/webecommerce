@@ -4,13 +4,17 @@ import './styles.css';
 
 class Cart extends React.Component{
 
-        
+  getLoginId = () => {
+    const token = window.localStorage.getItem('email');
+  }  
+
   state={
     items: []
   }
   componentDidMount(){
     const id = 4;
     const token = window.localStorage.getItem('token');
+
     if(token){
       api.get('/items/order/'+id).then(res=>{
         const dataItems=res.data

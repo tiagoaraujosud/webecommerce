@@ -24,6 +24,15 @@ export const getUserbyId = async (req: Request, res: Response): Promise<Response
     return res.json(response.rows);
 }
 
+/**GET A USER BY EMAIL */
+export const getUserbyEmail = async (req: Request, res: Response): Promise<Response> => {
+    const email = req.params.email;
+
+    const response: QueryResult = await pool.query('SELECT id FROM users WHERE email = $1', [email])
+
+    return res.json(response.rows);
+}
+
 /**CREATE A NEW USER */
 export const createUser = async (req: Request, res: Response): Promise<Response> => {
     

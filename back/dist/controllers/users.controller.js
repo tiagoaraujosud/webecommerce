@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteUser = exports.updateUser = exports.createUser = exports.getUserbyId = exports.getUsers = void 0;
+exports.deleteUser = exports.updateUser = exports.createUser = exports.getUserbyEmail = exports.getUserbyId = exports.getUsers = void 0;
 const database_1 = require("../database");
 /**GET ALL USERS */
 const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -29,6 +29,13 @@ const getUserbyId = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     return res.json(response.rows);
 });
 exports.getUserbyId = getUserbyId;
+/**GET A USER BY EMAIL */
+const getUserbyEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const email = req.params.email;
+    const response = yield database_1.pool.query('SELECT id FROM users WHERE email = $1', [email]);
+    return res.json(response.rows);
+});
+exports.getUserbyEmail = getUserbyEmail;
 /**CREATE A NEW USER */
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
