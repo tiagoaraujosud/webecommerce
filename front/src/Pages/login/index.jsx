@@ -13,7 +13,8 @@ function Login () {
     };
     const response = await api.post('/login', data);
     const token = JSON.stringify(response.data);
-    window.localStorage.setItem('token', token); 
+    window.localStorage.setItem('token', token);
+    window.localStorage.setItem('user',data.email);
     if(token){
       window.location.href = '/products';
     }
@@ -74,7 +75,7 @@ function Login () {
                     <ErrorMessage name='password' className='form-error'></ErrorMessage>
                   </div>
 
-                  <button className='button' type='submit'>Enter</button>
+                  <button className='button' type='submit'>Login</button>
                 </Form>
               )
             }

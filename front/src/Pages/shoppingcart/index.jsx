@@ -31,7 +31,6 @@ class Cart extends React.Component{
         <h1>My Cart</h1>
           <tr>
               <th>Id Product</th>
-              <th>Nº Item</th>
               <th>Quantity</th>
               <th>Price</th>
           </tr>
