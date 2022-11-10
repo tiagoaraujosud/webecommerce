@@ -12,6 +12,7 @@ import AddProducts from '../Pages/products/addProducts';
 import User from '../Pages/user';
 import Cart from '../Pages/shoppingcart';
 
+
 const Routes = () => {
   return(
     <BrowserRouter>

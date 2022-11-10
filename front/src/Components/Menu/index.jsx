@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom';
 function Menu() {
   
   const handleClickLogout = () => {
-    window.localStorage.removeItem('token');
-    window.localStorage.removeItem('user');
+    window.localStorage.clear();
     alert('Efetuando Logout!')
     window.location.href = '/home';
   };

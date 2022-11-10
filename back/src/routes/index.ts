@@ -26,11 +26,11 @@ router.delete('/products/:id', getLogin, deleteProduct);
 router.get('/orders', getOrders);
 router.get('/orders/order/:id', getLogin, getOrderbyId);
 router.get('/orders/user/:id', getLogin, getOrderbyUserId);
-router.post('/orders', getLogin, createOrder);
+router.post('/orders', createOrder);
 router.delete('/orders/:id', getLogin, deleteOrder);
 
 //Item Order Routes
-router.post('/items', getLogin,  createItemOrder);
+router.post('/items', createItemOrder);
 router.get('/items/order/:id', getItemsbyOrderId);
 router.get('/items/user/:id', getItemsbyUserId);
 router.put('/items/:id/:id_order', getLogin, updateItemsbyId);

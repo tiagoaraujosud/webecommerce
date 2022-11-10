@@ -24,10 +24,10 @@ router.delete('/products/:id', login_controller_1.getLogin, products_controller_
 router.get('/orders', orders_controller_1.getOrders);
 router.get('/orders/order/:id', login_controller_1.getLogin, orders_controller_1.getOrderbyId);
 router.get('/orders/user/:id', login_controller_1.getLogin, orders_controller_1.getOrderbyUserId);
-router.post('/orders', login_controller_1.getLogin, orders_controller_1.createOrder);
+router.post('/orders', orders_controller_1.createOrder);
 router.delete('/orders/:id', login_controller_1.getLogin, orders_controller_1.deleteOrder);
 //Item Order Routes
-router.post('/items', login_controller_1.getLogin, item_order_controller_1.createItemOrder);
+router.post('/items', item_order_controller_1.createItemOrder);
 router.get('/items/order/:id', item_order_controller_1.getItemsbyOrderId);
 router.get('/items/user/:id', item_order_controller_1.getItemsbyUserId);
 router.put('/items/:id/:id_order', login_controller_1.getLogin, item_order_controller_1.updateItemsbyId);
