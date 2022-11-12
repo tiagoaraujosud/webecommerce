@@ -30,7 +30,7 @@ export const getUserbyEmail = async (req: Request, res: Response): Promise<Respo
 
     const response: QueryResult = await pool.query('SELECT id FROM users WHERE email = $1', [email])
 
-    return res.json(response.rows);
+    return res.json(response);
 }
 
 /**CREATE A NEW USER */

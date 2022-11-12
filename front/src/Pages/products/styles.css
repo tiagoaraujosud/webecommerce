@@ -1,64 +1,57 @@
-.column {
-	flex-direction: column;
-	justify-content: space-around;
-	text-align: center;
+* {
+	box-sizing: border-box;
 }
 
-/* Flex Container */
-.container {
+a{
+	text-decoration: none;
+}
+
+img.small {
+	max-width: 10rem;
+	width: 100%;
+
+}
+
+button {
+	padding: 0.3rem;
+	border: 0.1rem #404040 solid;
+	background-color: #f0c040;
+	width: 100%;
+	cursor: pointer;
+}
+
+.card {
+	background-color: white;
+	padding: 1rem;
+	margin: 0.5rem;
+}
+
+.row {
 	display: flex;
-	max-width: 1000px;
-	margin: 0 auto;
-	display: flex;
-	justify-content: space-around;
-	border: 1px solid #ccc;
-}
-/* Flex Item */
-.item {
-	/* O flex: 1; é necessário para que cada item se expanda ocupando o tamanho máximo do container. */
-	flex: 1;
-	justify-content: space-around;
-	flex-wrap: nowrap;
-	margin: 5px;
-	background: rgb(253, 252, 252);
-	font-size: 1.5em;
-}
-.table {
-	/* O flex: 1; é necessário para que cada item se expanda ocupando o tamanho máximo do container. */
-	flex: 1;
-	margin: 5px;
-	background: rgb(102, 97, 96);
-	text-align: center;
-	font-size: 1.5em;
-}
-.eachproduct{
-	flex: 1;
-	justify-content: space-around;
-	margin: 5px;
-	background: rgb(102, 97, 96);
-	text-align: center;
-	font-size: 1.5em;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
-.eachproduct{
-	font-size: 20px;
-    padding: 7.5px 10px 7.5px 0;
+.col-1{
+	flex-basis: 100%;
 }
 
-body {
-	font-family: monospace;
-	color: #333;
+.col-2{
+	flex-basis: 100%;
 }
 
-h1 {
-	text-align: center;
-	margin: 20px 0 0 0;
-	font-size: 1.25em;
-	font-weight: normal;
+@media screen and (min-width: 800px) {
+	.col-1 {
+		flex: 1;
+	}
+
+	.col-2 {
+		flex: 2;
+	}
 }
 
-img{
-	width: 30px;
-	height:30px;
+.block {
+	background-color: #bc8dfb;
+	padding: 1rem;
+	margin: 0.5rem;
 }
-

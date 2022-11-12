@@ -7,10 +7,9 @@ import Footer from '../Components/footer';
 import Home from '../Pages/home';
 import Register from '../Pages/register';
 import Login from '../Pages/login';
-import Products from '../Pages/products';
 import AddProducts from '../Pages/products/addProducts';
 import User from '../Pages/user';
-import Cart from '../Pages/shoppingcart';
+import ShoppingCart from '../Pages/products';
 
 
 const Routes = () => {
@@ -21,9 +20,8 @@ const Routes = () => {
         <Route path="/" exact element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/products" element={<ShoppingCart />} />
         <Route path="/add_products" element={<AddProducts />} />
-        <Route path="/cart" element={<Cart />} />
         <Route path="/users" element={<User />} />
       </Switch>
       <Footer />

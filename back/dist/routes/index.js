@@ -22,10 +22,10 @@ router.put('/products/:id', login_controller_1.getLogin, products_controller_1.u
 router.delete('/products/:id', login_controller_1.getLogin, products_controller_1.deleteProduct);
 //Orders Routes
 router.get('/orders', orders_controller_1.getOrders);
-router.get('/orders/order/:id', login_controller_1.getLogin, orders_controller_1.getOrderbyId);
-router.get('/orders/user/:id', login_controller_1.getLogin, orders_controller_1.getOrderbyUserId);
+router.get('/orders/order/:id', orders_controller_1.getOrderbyId);
+router.get('/orders/user/:id', orders_controller_1.getOrderbyUserId);
 router.post('/orders', orders_controller_1.createOrder);
-router.delete('/orders/:id', login_controller_1.getLogin, orders_controller_1.deleteOrder);
+router.delete('/orders/:id', orders_controller_1.deleteOrder);
 //Item Order Routes
 router.post('/items', item_order_controller_1.createItemOrder);
 router.get('/items/order/:id', item_order_controller_1.getItemsbyOrderId);

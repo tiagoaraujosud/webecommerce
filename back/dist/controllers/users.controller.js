@@ -33,7 +33,7 @@ exports.getUserbyId = getUserbyId;
 const getUserbyEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const email = req.params.email;
     const response = yield database_1.pool.query('SELECT id FROM users WHERE email = $1', [email]);
-    return res.json(response.rows);
+    return res.json(response);
 });
 exports.getUserbyEmail = getUserbyEmail;
 /**CREATE A NEW USER */

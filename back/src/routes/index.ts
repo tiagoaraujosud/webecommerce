@@ -24,10 +24,10 @@ router.delete('/products/:id', getLogin, deleteProduct);
 
 //Orders Routes
 router.get('/orders', getOrders);
-router.get('/orders/order/:id', getLogin, getOrderbyId);
-router.get('/orders/user/:id', getLogin, getOrderbyUserId);
+router.get('/orders/order/:id', getOrderbyId);
+router.get('/orders/user/:id', getOrderbyUserId);
 router.post('/orders', createOrder);
-router.delete('/orders/:id', getLogin, deleteOrder);
+router.delete('/orders/:id', deleteOrder);
 
 //Item Order Routes
 router.post('/items', createItemOrder);
