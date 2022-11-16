@@ -40,11 +40,16 @@ function ShoppingCart(){
     const [product, setProduct] = useState([]);
 
     useEffect(() => {
+        const token = window.localStorage.getItem('token');
+        if(token){
             api.get('/products').then((response) => {
                 setProduct(response.data)
             }).catch((err) => {
                 console.error("Error Ocurred!"+err);
             });
+        }else {
+            window.location.href = '/login';
+        }
     }, []);
 
     return (
