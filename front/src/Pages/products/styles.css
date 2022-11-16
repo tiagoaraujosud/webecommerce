@@ -20,8 +20,27 @@ button {
 	cursor: pointer;
 }
 
+button.add {
+	background-color: #40c0f0;
+	width: 1.5rem;
+}
+button.remove {
+	background-color: #40c0f0;
+	width: 1.5rem;
+}
+
+.p-1 {
+	padding: 1rem;
+}
+button.badge {
+	background-color: #f04040;
+	border: none;
+	color: #ffffff;
+	width: 1.5rem;
+}
+
 .card {
-	background-color: white;
+	background-color: #f6eda6;
 	padding: 1rem;
 	margin: 0.5rem;
 }

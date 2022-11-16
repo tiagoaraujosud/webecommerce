@@ -1,35 +1,35 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import api from '../../services/api';
+import './styles.css';
 
-function Product(){
 
-    const [product, setProduct] = useState([]);
 
-    useEffect(() => {
-        const token = window.localStorage.getItem('token');
-        if(token){
-            api.get('/products').then((response) => {
-                setProduct(response.data)
-            }).catch((err) => {
-                console.error("Error Ocurred!"+err);
-            });
-        }    
-    }, []);
+function Product(props){
+
+    const {item, product, onAdd, onRemove } = props;
 
     return(
-        <div className="row">
-                {product.map((product) => (
-                    <div className="card" key={product.id}>
-                        <img className="small" src={product.img} alt={product.name} />
-                        <h3>{product.name}</h3>
-                        <div>${product.price}</div>
-                        <div>
-                            <button>Add To Cart</button>
-                        </div>
-                    </div>
-                ))}
+        <div className="card">
+            <img className="small" src={product.img} alt={product.name} />
+            <h3>{product.name}</h3>
+            <div>${product.price}</div>
+            <div>
+                {item ? (
+                <div>
+                    <button onClick={() => onRemove(item)} className="remove">
+                        -
+                    </button>
+                    <span className="p-1">{item.qty}</span>
+                    <button onClick={() => onAdd(item)} className="add">
+                        +
+                    </button>
+                </div>
+                ) : (
+                    <button onClick={() => onAdd(product)}>Add to Cart</button>
+                )}
             </div>
+
+        </div>
     )
 }
 
