@@ -9,8 +9,8 @@ CREATE TABLE users(
 CREATE TABLE products(
     id SERIAL PRIMARY KEY, 
     name VARCHAR(50), 
-    price NUMERIC, 
-    img VARCHAR(20)
+    price FLOAT, 
+    img VARCHAR(200)
 );
 
 CREATE TABLE orders(

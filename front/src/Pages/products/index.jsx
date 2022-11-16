@@ -51,7 +51,7 @@ function ShoppingCart(){
         <div>
             <div className='row'>
                 <Main cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} products={product}/>
-                <Basket countCartItems={cartItems.length} />
+                <Basket countCartItems={cartItems.length} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />
             </div>
         </div>
     )

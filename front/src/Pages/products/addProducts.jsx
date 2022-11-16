@@ -6,7 +6,7 @@ import {Formik, Form, Field, ErrorMessage} from 'formik';
 
 function AddProducts () {
 
-  const initialValues = {name: '', price: ''};
+  const initialValues = {name: '', price: '', img: ''};
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState();
@@ -24,7 +24,8 @@ function AddProducts () {
     //verificar se o usuário está logado
     const data = {
       name: values.name,
-      price: values.price
+      price: values.price,
+      img: values.img
     };
     api.post('/products', data);
   };
@@ -81,6 +82,22 @@ function AddProducts () {
                     />
 
                     <ErrorMessage name='price' className='form-error'></ErrorMessage>
+                  </div>
+
+                  <div className='login-form-group'>
+                    <Field 
+                      name='img' 
+                      className='form-field' 
+                      placeholder='image url' 
+                      value={values.img} 
+                      onChange={
+                        e => {
+                          handleChange(e)
+                        }
+                      }
+                    />
+
+                    <ErrorMessage name='img' className='form-error'></ErrorMessage>
                   </div>
 
                   <button className='button' type='submit'>Save new Product</button>
