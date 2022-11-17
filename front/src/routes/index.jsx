@@ -10,6 +10,7 @@ import Login from '../Pages/login';
 import AddProducts from '../Pages/products/addProducts';
 import User from '../Pages/user';
 import ShoppingCart from '../Pages/products';
+import AdminMenu from '../Components/admin';
 
 
 const Routes = () => {
@@ -21,7 +22,7 @@ const Routes = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<ShoppingCart />} />
-        <Route path="/add_products" element={<AddProducts />} />
+        <Route path="/add_products" element={<AdminMenu />} />
         <Route path="/users" element={<User />} />
       </Switch>
       <Footer />

@@ -46,13 +46,17 @@ function ShoppingCart(){
     useEffect(() => {
         setCartItems(localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')):[]);
         const token = window.localStorage.getItem('token');
+        const user = window.localStorage.getItem('user');
         if(token){
-            api.get('/products').then((response) => {
+            if(user === 'admin@admin.com.br'){
+                window.location.href = '/add_products';
+            }else {api.get('/products').then((response) => {
                 setProduct(response.data)
             }).catch((err) => {
                 console.error("Error Ocurred!"+err);
-            });
+            });}
         }else {
+            alert('You must be Logged!!!')
             window.location.href = '/login';
         }
     }, []);
