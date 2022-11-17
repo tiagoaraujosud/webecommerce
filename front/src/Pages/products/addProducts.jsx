@@ -7,8 +7,6 @@ import {Formik, Form, Field, ErrorMessage} from 'formik';
 function AddProducts () {
 
   const initialValues = {name: '', price: '', img: ''};
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [user, setUser] = useState();
 
   useEffect(() => {
